@@ -1,0 +1,10 @@
+<div class="pagination-pages-info">
+    {{ 'pagination.page' | transloco: {page: getValue().currentPage, total: getValue().itemPerPage} }}
+</div>
+<div class="pagination-count-info" [ngPlural]="total">
+    <ng-template ngPluralCase="=0">{{ 'pagination.item-count.noOne' | transloco }}</ng-template>
+    <ng-template ngPluralCase="=1">{{ 'pagination.item-count.justOne' | transloco }}</ng-template>
+    <ng-template
+            ngPluralCase="other">{{ 'pagination.item-count.moreThanOne' | transloco: {total: getValue().total} }}
+    </ng-template>
+</div>

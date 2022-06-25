@@ -1,0 +1,40 @@
+.modal-container {
+    border-radius: 4px;
+    background-color: var(--bs-catalina-blue);
+    box-shadow: 0 1px 15px #00000026;
+}
+
+.close {
+    cursor: pointer;
+}
+
+.title-page {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+p {
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.modal-header {
+    padding: 32px;
+    border: 0;
+}
+
+.modal-footer {
+    padding: 32px;
+    border: 0;
+}
+
+.modal-body {
+    min-height: 100px;
+    padding: 0 32px 0 32px;
+}
+
+.body-text {
+    word-break: break-word;
+    text-align: center;
+    margin-top: 20px;
+}

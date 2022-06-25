@@ -1,0 +1,15 @@
+<div *ngIf="totalItems" class="d-flex flex-row justify-content-between pt-5" id="pagination-container">
+    <sgm-pagination-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage">
+    </sgm-pagination-count>
+    <ngb-pagination [collectionSize]="totalItems"
+                    [(page)]="page"
+                    [pageSize]="itemsPerPage"
+                    [maxSize]="3"
+                    [rotate]="true"
+                    [boundaryLinks]="false"
+                    (pageChange)="changePage(page)">
+        <ng-template ngbPaginationPrevious data-testid="btn-previous-page"> < </ng-template>
+        <ng-template ngbPaginationNext data-testid="btn-next-page"> > </ng-template>
+    </ngb-pagination>
+</div>
+

@@ -1,0 +1,13 @@
+<div class="input-group mb-3">
+    <input type="text"
+           id="search-input"
+           class="form-control"
+           name="search"
+           data-testid="search-input"
+           placeholder="{{ placeholder | transloco }}"
+           [ngClass]="customClass"
+           (keyup)="changeFilter($event)"
+           title="{{ 'message.fillThisField' | transloco }}"
+           required>
+    <span class="input-group-text material-icons-round md-18">search</span>
+</div>

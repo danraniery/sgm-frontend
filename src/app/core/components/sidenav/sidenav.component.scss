@@ -1,0 +1,202 @@
+/* common variables for sidemenu */
+$side-menu-width: 280px;
+$nav-link-dimension: 56px;
+$nav-link-height-with-padding: 64px;
+$side-menu-width-closed: 80px;
+$transition-navbar: cubic-bezier(.2, 0, .38, .9) 0.3s;
+$transition-opacity-delay600ms: opacity 0.3s linear 0.3s;
+$transition-selected-menu-indicator: all ease-in-out 0.1s;
+$transition-opacity-elements: opacity linear 0.1s;
+
+/* background sidemenu */
+.bg-midnight-blue {
+    background-color: var(--bs-midnight-blue);
+}
+
+/* collapsed sidemenu */
+.sidenav-wrap {
+    width: $side-menu-width-closed;
+    min-height: 100vh;
+    position: fixed;
+    z-index: 2000;
+    box-shadow: 1px 0 6px #00000054;
+    transition: $transition-navbar;
+}
+
+/* sidemenu button */
+li:first-child {
+    margin-left: 12px;
+    margin-top: 12px;
+}
+
+/* sidemenu button */
+.nav-link:first-child {
+    cursor: pointer;
+}
+
+/* nav-item - wrap nav-link */
+.nav-item {
+    width: $nav-link-dimension;
+    height: $nav-link-height-with-padding;
+    margin: 0 12px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    text-align: left;
+    background-color: transparent;
+    border-bottom: 0 solid var(--bs-midnight-blue-tint);
+    transition: all ease-in-out 0.15s;
+}
+
+/* nav-link - menu label and icon */
+.nav-link {
+    width: $nav-link-dimension;
+    height: $nav-link-dimension;
+    color: white;
+    transition: all linear 0.3s;
+}
+
+/* nav-link with active state */
+.nav-link.active {
+    width: $nav-link-dimension;
+    height: $nav-link-dimension;
+    border-radius: 8px;
+    background-color: white;
+    color: var(--bs-midnight-blue);
+    transition: width linear 0.2s;
+}
+
+/* nav-link with hover and active state */
+.nav-link:hover, .nav-link.active:hover {
+    background-color: var(--bs-midnight-blue-tint);
+    border-radius: 8px;
+    color: white;
+    transition: all 0.5s;
+}
+
+/* selected menu indicator - sidemenu opened */
+.nav-link.active::before {
+    content: "";
+    width: 0;
+    height: $nav-link-dimension;
+    position: absolute;
+    left: 0;
+    background-color: transparent;
+    margin-right: 12px;
+    border-radius: 0 5px 5px 0;
+    transition: $transition-selected-menu-indicator;
+}
+
+/* menu logo - hidden */
+.navbar-brand {
+    opacity: 0;
+    margin: 0;
+    transition: $transition-opacity-elements;
+
+    img {
+        height: 0;
+        width: 0;
+    }
+}
+
+.small-logo {
+    opacity: 1;
+    transition: $transition-opacity-elements;
+}
+
+/* labels - hidden */
+.menu-label {
+    font-size: 0;
+    margin-left: 28px;
+    opacity: 0;
+    transition: $transition-opacity-delay600ms;
+}
+
+/*
+############################
+     SIDENAV - OPENEND
+############################
+*/
+
+.sidenav-wrap.opened {
+    width: $side-menu-width;
+    transition: $transition-navbar;
+
+    /* sidemenu button */
+    li:first-child a {
+        width: $nav-link-dimension;
+    }
+
+    /* nav-item - wrap nav-link */
+    .nav-item {
+        width: auto;
+        margin-left: 0;
+        height: $nav-link-height-with-padding;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-top: 4px;
+        padding-bottom: 4px;
+        padding-left: 12px;
+        border-bottom: 1px solid var(--bs-midnight-blue-tint);
+        transition: all 0.6s ease-in-out 0.3s;
+    }
+
+    /* nav-link - menu label and icon */
+    .nav-link {
+        width: 100%;
+        transition: width linear 0.1s;
+    }
+
+    /* nav-link with active state */
+    .nav-link.active {
+        width: 100%;
+        background-color: transparent;
+        color: white;
+        transition: background-color 0.2s linear, width 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    }
+
+    /* nav-link with hover and active state */
+    .nav-link:hover, .nav-link.active:hover {
+        background-color: var(--bs-midnight-blue-tint);
+        border-radius: 8px;
+        color: white;
+        transition: all 0.5s;
+    }
+
+    /* selected menu indicator - side menu opened */
+    .nav-link.active::before {
+        background-color: white;
+        width: 5px;
+        margin-right: 7px;
+        transition: $transition-selected-menu-indicator;
+    }
+
+    /* menu logo - visible */
+    .navbar-brand {
+        opacity: 1;
+        transition: $transition-opacity-delay600ms;
+        margin-left: 8px;
+
+        img {
+            height: 45px;
+            width: auto;
+        }
+    }
+
+    .small-logo {
+        opacity: 0;
+        transition: $transition-opacity-elements;
+    }
+
+    /* labels - visible */
+    .menu-label {
+        font-size: 12px;
+        opacity: 1;
+        transition: $transition-opacity-delay600ms;
+    }
+}
+
+.disabled {
+    cursor: unset;
+    pointer-events: none;
+    opacity: 0.6;
+}

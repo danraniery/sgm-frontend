@@ -1,0 +1,17 @@
+<input (click)="action()" [class.checked]="activated" [disabled]="disabledToggle" autocomplete="off"
+       class="btn-check"
+       id="input-toggle-{{inputToggleId}}" type="checkbox">
+
+<label *ngIf="activated" [title]="blocked ? ('message.onUnlock' | transloco) : ''" class="btn"
+       for="input-toggle-{{inputToggleId}}" [ngClass]="{'badge-blocked': blocked}">
+    <span *ngIf="!blocked" class="material-icons-round md-16 status-icon">check_circle</span>
+    <img *ngIf="blocked" [src]="'assets/images/active-blocked.svg'" alt="Blocked user" height="16" width="16" class="status-icon">
+    {{ 'status.active' | transloco }}
+</label>
+
+<label *ngIf="!activated" [title]="blocked ? ('message.onUnlock' | transloco) : ''"
+       class="btn" for="input-toggle-{{inputToggleId}}" [ngClass]="{'badge-blocked': blocked}">
+    <span *ngIf="!blocked"  class="material-icons-round md-16 status-icon">radio_button_unchecked</span>
+    <img *ngIf="blocked" [src]="'assets/images/inactive-blocked.svg'" alt="Blocked user" height="16" width="16" class="status-icon">
+    {{ 'status.inactive' | transloco }}
+</label>

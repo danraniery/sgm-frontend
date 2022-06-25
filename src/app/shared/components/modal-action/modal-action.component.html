@@ -1,0 +1,23 @@
+<div class="modal-container">
+    <div class="modal-header">
+        <div class="container-page-title-label">
+            <span class="title-page" id="confirm-modal-title">{{ title | transloco }}</span>
+        </div>
+        <span class="material-icons md-18 close" data-testid="modal-close-button" (click)="cancel()">close</span>
+
+    </div>
+    <div class="modal-body d-flex" id="confirm-modal-body">
+        <div class="d-flex flex-row justify-content-center m-auto flex-fill">
+            <p class="body-text" transloco="{{body}}" [translocoParams]="params"></p>
+        </div>
+    </div>
+    <div class="modal-footer d-flex flex-row justify-content-between mt-auto buttons-container"
+         id="confirm-modal-footer">
+        <button type="button" class="btn btn-primary" id="btn-confirm" data-testid="modal-confirm-button"
+                (click)="confirm()" transloco="button.confirm">Confirm
+        </button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" data-testid="modal-cancel-button"
+                id="btn-cancel" (click)="cancel()" transloco="button.cancel">Cancel
+        </button>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+<sgm-loading></sgm-loading>
+
+<div *ngIf="isToShowBar()">
+    <sgm-sidenav></sgm-sidenav>
+    <!--    <sgm-navbar></sgm-navbar>-->
+</div>
+
+<div [ngClass]="{'sgm-container': isToShowBar()}">
+    <div class="sgm-content">
+        <router-outlet></router-outlet>
+    </div>
+</div>

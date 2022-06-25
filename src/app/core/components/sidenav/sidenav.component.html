@@ -1,0 +1,19 @@
+<div class="sidenav-wrap d-flex flex-column flex-shrink-0 bg-midnight-blue"
+     [ngClass]="opened ? 'opened' : 'closed'"
+     (mouseenter)="this.opened = true" (mouseleave)="this.opened = false">
+    <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
+        <li (mouseenter)="this.opened = true"
+            class="d-flex justify-content-start align-items-start">
+            <a class="nav-link py-3 mb-5 pe-none" aria-current="page" title="menu">
+                <img class="small-logo" [ngClass]="opened ? 'opened' : 'closed'" src="assets/logo/bom-destino.png"
+                     alt="">
+            </a>
+            <a class="navbar-brand"
+               [ngClass]="opened ? 'opened' : 'closed'"
+               (click)="opened=false"
+               routerLink="" data-testid="menu-logo">
+                <img src="assets/logo/bom-destino.png" alt="">
+            </a>
+        </li>
+    </ul>
+</div>

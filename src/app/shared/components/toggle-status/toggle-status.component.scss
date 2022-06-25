@@ -1,0 +1,44 @@
+.btn {
+    border-radius: 64px;
+    font-size: 10px;
+    color: white;
+    height: 26px;
+    width: 83px;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+.md-12 {
+    font-size: 12px;
+    margin-right: 6px;
+}
+
+.btn-check + .btn {
+    background-color: var(--bs-dark-gray);
+    outline: none;
+}
+
+.btn-check:hover + .btn {
+    background-color: var(--bs-iron);
+}
+
+.btn-check.checked + .btn {
+    background-color: var(--bs-success);
+    outline: none;
+}
+
+.btn-check.checked:hover + .btn {
+    background-color: var(--bs-moderate-lime-green);
+}
+
+.badge-blocked {
+    padding: 8px 8px 8px 12px;
+}
+
+.status-icon{
+    margin-right: 5px;
+}
+
