@@ -1,0 +1,103 @@
+/* This code change the background for entire application */
+body:after {
+    background-image: url('../../assets/imagens/background.jpg');
+    height: 100%;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.1;
+    content: "";
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+/* Rules for sizing the icon. */
+.material-icons.md-16, .material-icons-outlined.md-16, .material-icons-round.md-16 {
+    font-size: 16px;
+}
+
+.material-icons.md-18, .material-icons-outlined.md-18, .material-icons-round.md-18 {
+    font-size: 18px;
+}
+
+.material-icons.md-24, .material-icons-outlined.md-24, .material-icons-round.md-24 {
+    font-size: 24px;
+}
+
+.material-icons.md-36, .material-icons-outlined.md-36, .material-icons-round.md-36 {
+    font-size: 36px;
+}
+
+.material-icons.md-48, .material-icons-outlined.md-48, .material-icons-round.md-48 {
+    font-size: 48px;
+}
+
+/* Rules for using icons as black on a light background. */
+.material-icons.md-dark {
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.material-icons.md-dark.md-inactive {
+    color: rgba(0, 0, 0, 0.26);
+}
+
+/* Rules for using icons as white on a dark background. */
+.material-icons.md-light {
+    color: rgba(255, 255, 255, 1);
+}
+
+.material-icons.md-light.md-inactive {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* Tooltip */
+.menu-tooltip .tooltip-inner {
+    background-color: white;
+    color: var(--bs-midnight-blue);
+    margin-left: 24px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Modal Backdrop */
+.theme-custom-backdrop {
+    background-color: var(--bs-backdrop-color);
+}
+
+/* Modal Big Size */
+.theme-custom-modal-size .modal-dialog {
+    max-width: 800px;
+}
+
+/* Remove Modal border */
+.modal-content {
+    border: 0;
+}
+
+/* Increase Modal Position */
+.modal {
+    z-index: 2110;
+}
+
+/* Increase Modal Backdrop Position */
+.modal-backdrop {
+    z-index: 2100 !important;
+}
+
+/* User Popover */
+.theme-custom-popover {
+    background-color: var(--bs-catalina-blue);
+    border-radius: 4px;
+    box-shadow: 0 1px 15px #00000026;
+    padding: 30px;
+    margin-top: 33px;
+    width: 190px;
+
+    .popover-body {
+        padding: 0;
+    }
+}

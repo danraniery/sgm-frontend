@@ -12,4 +12,8 @@ export class SidenavComponent {
     constructor() {
     }
 
+    openMenu() {
+        this.opened = !this.opened;
+    }
+
 }

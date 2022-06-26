@@ -1,0 +1,198 @@
+{
+    "app": {
+        "name": "Bom Destino"
+    },
+    "login": {
+        "message": "Bem Vindo!",
+        "loginPlaceholder": "Nome de Usuário",
+        "passwordPlaceholder": "Senha",
+        "button": "Acessar"
+    },
+    "home": {
+        "title": "Bem-vindo!"
+    },
+    "button": {
+        "save": "Salvar",
+        "create": "Criar",
+        "update": "Atualizar",
+        "confirm": "Confirmar",
+        "cancel": "Cancelar",
+        "back": "Voltar"
+    },
+    "status": {
+        "active": "Ativo",
+        "inactive": "Inativo",
+        "blocked": "Bloqueado"
+    },
+    "search": {
+        "placeholder": "Pesquisar por nome"
+    },
+    "pagination": {
+        "page": "Página {{ page }} de {{ total }}",
+        "item-count": {
+            "noOne": "Nenhum registro encontrado",
+            "justOne": "1  registro encontrado",
+            "moreThanOne": "{{ total }} registros encontrados"
+        }
+    },
+    "message": {
+        "noChanges": "Nenhuma alteração foi feita.",
+        "required": "Campo obrigatório.",
+        "minLength": "Este campo deve ter no mínimo {{ min }} caracteres.",
+        "maxLength": "Este campo não pode ter mais de {{ max }} caracteres.",
+        "noResults": "Nenhum resultado encontrado.",
+        "noItems": "Nenhum item cadastrado.",
+        "serverNotReachable": "Servidor indisponível.",
+        "actionNotReachable": "Não foi possível realizar essa ação. Por favor verificar a conexão com a internet ou entrar em contato com o Administrador da solução.",
+        "fillThisField": "Preencha este campo.",
+        "invalidPassword": "A senha deve conter 3 dos 4 tipos de caracteres: letras maiúsculas, minúsculas, números e caracteres especiais.",
+        "invalidPasswordSize": "A senha deve conter 7 caracteres ou mais.",
+        "invalidPasswordWithUserInfo": "A senha não pode conter o username, o primeiro nome ou o último nome do usuário.",
+        "invalidConfirmPassword": "As senhas digitadas não são iguais.",
+        "onUnlock": "Este usuário está bloqueado, clique para desbloqueá-lo."
+    },
+    "generalFields": {
+        "options": "Opções",
+        "status": "Status"
+    },
+    "ngSelect": {
+        "clearAllText": "Limpar tudo"
+    },
+    "password": {
+        "title": "Alterar Senha",
+        "password": "Senha",
+        "passwordPlaceholder": "Inserir senha",
+        "confirmPassword": "Confirmar Senha",
+        "confirmPasswordPlaceholder": "Repetir senha",
+        "onUpdate": "Senha alterada.",
+        "logout": "Sair",
+        "rule": {
+            "title1": "Sua senha deve:",
+            "title2": "E conter ao menos 03 desses tipos:",
+            "size": "Ser de tamanho mínimo de 07 caracteres!",
+            "number": "Conter no mímino 01 número!",
+            "uppercase": "Conter no mímino 01 letra maiúscula!",
+            "lowercase": "Conter no mímino 01 letra minúscula!",
+            "nonAlphabetic": "Conter no mínimo 01 caractere especial!",
+            "equal": "Ser igual à confirmação!",
+            "userInfo": "Não conter o seu nome ou usuário!"
+        }
+    },
+    "user": {
+        "button": "Usuário",
+        "title": "Usuários",
+        "sub-title": {
+            "new": "Adicionar Usuário",
+            "edit": "Editar Usuário",
+            "view": "Detalhes do Usuário"
+        },
+        "list": {
+            "user": "Usuário"
+        },
+        "form": {
+            "label": {
+                "new":  "Aqui você pode adicionar um novo usuário",
+                "edit": "Aqui você pode atualizar as informações do usuário",
+                "view": "Aqui você pode visualizar as informações do usuário"
+            },
+            "info": {
+                "nome": "Nome completo",
+                "firstNamePlaceholder": "Nome completo",
+                "profile": "Perfil",
+                "profilePlaceholder": "Perfil",
+                "username": "Username",
+                "usernamePlaceholder": "Username",
+                "password": "Senha",
+                "passwordPlaceholder": "Senha",
+                "confirmPassword": "Confirmação de Senha",
+                "confirmPasswordPlaceholder": "Confirmação de Senha"
+            },
+            "messages": {
+                "changedProfile" : "Seu perfil foi alterado. A alteração entrará em vigor no próximo login."
+            }
+        },
+        "onSave": "Usuário adicionado.",
+        "onUpdate": "Usuário atualizado.",
+        "modal": {
+            "deactivate": {
+                "title": "Desativar Usuário",
+                "body": "Você confirma a desativação do Usuário?",
+                "message": "Usuário desativado."
+            },
+            "activate": {
+                "title": "Ativar Usuário",
+                "body": "Você confirma a ativação do Usuário?",
+                "message": "Usuário ativado."
+            },
+            "unblock": {
+                "title": "Desbloquear Usuário",
+                "body": "Você confirma o desbloqueio do Usuário?",
+                "message": "Usuário desbloqueado."
+            }
+        }
+    },
+    "sidenav": {
+        "home": "Início",
+        "users": "Usuários",
+        "settings": "Configurações",
+        "editProfile": "Editar conta",
+        "editPassword": "Alterar Senha",
+        "logout": "Sair"
+    },
+    "profile": {
+        "button": "Perfil",
+        "title": "Perfis",
+        "sub-title": {
+            "new": "Adicionar Perfil",
+            "edit": "Editar Perfil",
+            "view": "Detalhes do Perfil"
+        },
+        "tab": {
+            "profiles": "Perfis",
+            "permissions": "Permissões"
+        },
+        "form": {
+            "label": {
+                "new":  "Aqui você pode adicionar um novo perfil",
+                "edit": "Aqui você pode atualizar as informações do perfil",
+                "view": "Aqui você pode visualizar as informações do perfil"
+            },
+            "name": "Nome",
+            "namePlaceholder": "Nome",
+            "description": "Descrição",
+            "descriptionPlaceholder": "Descrição",
+            "roles": "Permissões",
+            "rolesPlaceholder": "Permissões"
+        },
+        "onSave": "Perfil adicionado.",
+        "onUpdate": "Perfil atualizado.",
+        "modal": {
+            "deactivate": {
+                "title": "Desativar Perfil",
+                "body": "Você confirma a desativação do Perfil?",
+                "message": "Perfil desativado."
+            },
+            "activate": {
+                "title": "Ativar Perfil",
+                "body": "Você confirma a ativação do Perfil?",
+                "message": "Perfil ativado."
+            }
+        },
+        "profiles": {
+            "SuperAdmin": "Perfil para gerenciar todas as entidades dos Módulos da Solução.",
+            "Auditor": "Perfil com acesso de leitura para auditoria dos Módulos de Solução."
+        },
+        "authorities": {
+            "name": {
+                "AUDITOR": "Acesso como Auditor",
+                "PROFILE_MANAGEMENT": "Gerenciar Perfis",
+                "USER_MANAGEMENT": "Gerenciar Usuários"
+            },
+            "description": {
+                "AUDITOR": "Permite que o usuário visualize todas as entidades do sistema.",
+                "PROFILE_MANAGEMENT": "Permite que o usuário cadastre, busque, edite e remova perfis do sistema.",
+                "USER_MANAGEMENT": "Permite que o usuário cadastre, busque, edite e remova usuários do sistema."
+            }
+        }
+    }
+}

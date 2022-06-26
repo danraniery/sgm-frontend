@@ -1,0 +1,101 @@
+table {
+    background-color: var(--bs-dark-blue);
+    border-radius: 4px;
+
+    thead {
+        border-bottom: 2px solid var(--bs-ship-cove);
+        height: 55px;
+
+        tr th {
+            color: var(--bs-ship-cove);
+            font-size: 14px;
+            vertical-align: middle;
+            cursor: pointer;
+        }
+
+        .sort-icon {
+            vertical-align: middle;
+            font-size: 18px;
+        }
+
+        tr th:hover {
+            .sort-icon {
+                color: var(--bs-primary-blue);
+            }
+        }
+    }
+
+    tbody {
+        tr td {
+            color: var(--bs-light);
+            border: none;
+            vertical-align: middle;
+            max-width: 200px;
+            height: 53px;
+            font-size: 14px;
+        }
+
+        tr:hover {
+            background: var(--bs-light-transparent);
+        }
+    }
+}
+
+.table-striped > tbody > tr:nth-child(odd) > td,
+.table-striped > tbody > tr:nth-child(odd) > th {
+    background-color: var(--bs-gray-transparent);
+    color: var(--bs-light);
+}
+
+.options-col {
+    width: 110px;
+    cursor: default;
+}
+
+.table {
+    th, td {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+.search-container {
+    background-color: var(--bs-dark-blue);
+    display: flex;
+    justify-content: end;
+    padding: 0 10px;
+
+    .search-item {
+        padding: 0 10px;
+    }
+}
+
+/* Icons Settings for Lists and Tables */
+.action-icons {
+    color: var(--bs-primary-blue);
+}
+
+.icons-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+}
+
+.action-icon-container {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    background-color: var(--bs-dark-midnight-blue);
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.disable-cursor {
+    pointer-events: none;
+    cursor: not-allowed;
+    opacity: 0.5;
+}

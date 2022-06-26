@@ -1,0 +1,89 @@
+.btn {
+    padding: 12px 30px 12px 30px;
+    font-size: 16px;
+    border-radius: 4px;
+}
+
+.btn-primary, .btn-primary:hover, .btn-primary:disabled, .btn-secondary:disabled, .btn-outline-primary:hover {
+    color: white;
+}
+
+.btn-sm {
+    padding: 12px;
+    font-size: 10px;
+}
+
+.btn-lg {
+    padding: 16px 32px 16px 32px;
+    font-size: 16px;
+}
+
+.btn-register {
+    height: 44px;
+    display: flex;
+    align-items: center;
+}
+
+.btn-primary:disabled {
+    pointer-events: none;
+    opacity: .50;
+}
+
+.btn-icon {
+    background-color: var(--bs-alice-blue-transparent);
+    padding: 15px;
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    size: 30px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.btn-icon:disabled {
+    pointer-events: none;
+}
+
+.btn-icon:hover {
+    background-color: var(--bs-dark-slate-gray);
+}
+
+.add-btn-circle{
+    color: var(--bs-primary-blue);
+    border-radius: 100%;
+    span {
+        font-size: 30px;
+    }
+}
+
+.btn-icon .add-btn-circle:hover{
+    background-color: var(--bs-ship-cove);
+}
+
+.btn-language {
+    text-align: center;
+    margin: auto;
+
+    button {
+        width: auto;
+        height: 48px;
+        padding: 6px 20px;
+        margin: auto 56px auto auto;
+        border: 1px solid white;
+        border-radius: 24px;
+        background-color: transparent;
+        color: var(--bs-ligth);
+
+        span {
+            margin: auto 5px;
+        }
+    }
+
+    button:hover {
+        background-color: var(--bs-light-transparent);
+    }
+
+}

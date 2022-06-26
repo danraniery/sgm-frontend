@@ -1,18 +1,123 @@
-<div class="sidenav-wrap d-flex flex-column flex-shrink-0 bg-midnight-blue"
+<div class="sidenav-wrap flex-column flex-shrink-0 bg-midnight-blue side-nav"
      [ngClass]="opened ? 'opened' : 'closed'"
      (mouseenter)="this.opened = true" (mouseleave)="this.opened = false">
     <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
         <li (mouseenter)="this.opened = true"
             class="d-flex justify-content-start align-items-start">
             <a class="nav-link py-3 mb-5 pe-none" aria-current="page" title="menu">
-                <img class="small-logo" [ngClass]="opened ? 'opened' : 'closed'" src="assets/logo/bom-destino.png"
+                <img class="small-logo" [ngClass]="opened ? 'opened' : 'closed'" src="assets/logo/bom-destino-icon.png"
                      alt="">
             </a>
             <a class="navbar-brand"
                [ngClass]="opened ? 'opened' : 'closed'"
                (click)="opened=false"
                routerLink="" data-testid="menu-logo">
-                <img src="assets/logo/bom-destino.png" alt="">
+                <img class="opened-image" src="assets/logo/bom-destino-icon.png" alt="">
+                <label class="sgm-label">{{ 'app.name' | transloco }}</label>
+            </a>
+        </li>
+        <li (mouseenter)="this.opened = true"
+            class="nav-item d-flex justify-content-start align-items-center"
+            routerLink=""
+            data-testid="menu-home-button">
+            <a class="d-flex align-items-center nav-link py-3"
+               [routerLinkActiveOptions]="{exact: true}"
+               routerLinkActive="active" (click)="opened=false">
+                <span class="material-icons-round md-24">home</span>
+                <span class="menu-label" [ngClass]="opened ? 'opened' : 'closed'"
+                      transloco="sidenav.home">Home</span>
+            </a>
+        </li>
+        <li (mouseenter)="this.opened = true"
+            class="nav-item d-flex justify-content-start align-items-center"
+            *sgmHasAnyAuthority="['ROLE_USER_MANAGEMENT', 'ROLE_AUDITOR']"
+            routerLink="/users"
+            data-testid="menu-users-button">
+            <a class="d-flex align-items-center nav-link py-3"
+               routerLinkActive="active" (click)="opened=false">
+                <span class="material-icons-round md-24">account_circle</span>
+                <span class="menu-label" [ngClass]="opened ? 'opened' : 'closed'"
+                      transloco="sidenav.users">Users</span>
+            </a>
+        </li>
+        <li (mouseenter)="this.opened = true"
+            class="nav-item d-flex justify-content-start align-items-center"
+            *sgmHasAnyAuthority="['ROLE_PROFILE_MANAGEMENT', 'ROLE_AUDITOR']"
+            routerLink="/settings"
+            data-testid="menu-configurations-button">
+            <a class="d-flex align-items-center nav-link py-3"
+               routerLinkActive="active" (click)="opened=false">
+                <span class="material-icons-round md-24">manage_accounts</span>
+                <span class="menu-label" [ngClass]="opened ? 'opened' : 'closed'"
+                      transloco="sidenav.settings">Settings</span>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="sidenav-wrap flex-column flex-shrink-0 bg-midnight-blue mobile-nav mobile-button" *ngIf="!opened"
+     [ngClass]="opened ? 'opened' : 'closed'" (mouseleave)="this.opened = false">
+    <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
+        <li class="d-flex justify-content-start align-items-start" (click)="openMenu()">
+            <a class="nav-link py-3 mb-5 pe-none" aria-current="page" title="menu">
+                <span class="material-icons-round md-24 menu-icon">menu</span>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="sidenav-wrap flex-column flex-shrink-0 bg-midnight-blue mobile-nav"
+     [ngClass]="opened ? 'opened' : 'closed'" *ngIf="opened"
+     (mouseenter)="this.opened = true" (mouseleave)="this.opened = false">
+    <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
+        <li (mouseenter)="this.opened = true"
+            class="d-flex justify-content-start align-items-start">
+            <a class="nav-link py-3 mb-5 pe-none" aria-current="page" title="menu">
+                <img class="small-logo" [ngClass]="opened ? 'opened' : 'closed'" src="assets/logo/bom-destino-icon.png"
+                     alt="">
+            </a>
+            <a class="navbar-brand"
+               [ngClass]="opened ? 'opened' : 'closed'"
+               (click)="opened=false"
+               routerLink="" data-testid="menu-logo">
+                <img class="opened-image" src="assets/logo/bom-destino-icon.png" alt="">
+                <label class="sgm-label">{{ 'app.name' | transloco }}</label>
+            </a>
+        </li>
+        <li (mouseenter)="this.opened = true"
+            class="nav-item d-flex justify-content-start align-items-center"
+            routerLink=""
+            data-testid="menu-home-button">
+            <a class="d-flex align-items-center nav-link py-3"
+               [routerLinkActiveOptions]="{exact: true}"
+               routerLinkActive="active" (click)="opened=false">
+                <span class="material-icons-round md-24">home</span>
+                <span class="menu-label" [ngClass]="opened ? 'opened' : 'closed'"
+                      transloco="sidenav.home">Home</span>
+            </a>
+        </li>
+        <li (mouseenter)="this.opened = true"
+            class="nav-item d-flex justify-content-start align-items-center"
+            *sgmHasAnyAuthority="['ROLE_USER_MANAGEMENT', 'ROLE_AUDITOR']"
+            routerLink="/users"
+            data-testid="menu-users-button">
+            <a class="d-flex align-items-center nav-link py-3"
+               routerLinkActive="active" (click)="opened=false">
+                <span class="material-icons-round md-24">account_circle</span>
+                <span class="menu-label" [ngClass]="opened ? 'opened' : 'closed'"
+                      transloco="sidenav.users">Users</span>
+            </a>
+        </li>
+        <li (mouseenter)="this.opened = true"
+            class="nav-item d-flex justify-content-start align-items-center"
+            *sgmHasAnyAuthority="['ROLE_PROFILE_MANAGEMENT', 'ROLE_AUDITOR']"
+            routerLink="/settings"
+            data-testid="menu-configurations-button">
+            <a class="d-flex align-items-center nav-link py-3"
+               routerLinkActive="active" (click)="opened=false">
+                <span class="material-icons-round md-24">manage_accounts</span>
+                <span class="menu-label" [ngClass]="opened ? 'opened' : 'closed'"
+                      transloco="sidenav.settings">Settings</span>
             </a>
         </li>
     </ul>

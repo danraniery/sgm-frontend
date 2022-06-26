@@ -1,0 +1,65 @@
+.form-control {
+    background-color: var(--bs-dark-blue);
+    border: none;
+    border-radius: 4px;
+    color: var(--bs-ship-cove);
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    width: 250px;
+    caret-color: var(--bs-ship-cove);
+    padding: 7px 12px 7px 20px;
+}
+
+.form-control::placeholder {
+    color: var(--bs-ship-cove);
+    font-weight: 400;
+}
+
+.form-control:disabled {
+    background-color: var(--bs-alice-blue-transparent);
+}
+
+.input-group {
+    width: 320px;
+    min-height: 44px;
+    background-color: var(--bs-dark-blue);
+    border: 1px solid var(--bs-catalina-blue);
+    padding: 0;
+    border-radius: 4px;
+
+    > input:focus, textarea:focus {
+        background-color: var(--bs-dark-blue);
+        border-radius: 4px;
+        border: none;
+        box-shadow: none;
+        outline: none;
+        color: var(--bs-ship-cove);
+        text-align: left;
+        font-weight: 600;
+        font-size: 12px;
+    }
+
+}
+
+.input-group-text {
+    background-color: var(--bs-dark-blue);
+    border: none;
+    color: var(--bs-ship-cove);
+}
+
+.btn-password-disabled{
+    background-color: var(--bs-alice-blue-transparent);
+    cursor: default;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px var(--bs-dark-blue) inset;
+}
+
+input:-webkit-autofill {
+    -webkit-text-fill-color: var(--bs-ship-cove);
+}

@@ -1,1 +1,28 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/scss/functions";
+
+@import 'src/assets/theme/project-variables';
+
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/root";
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/type";
+@import "~bootstrap/scss/images";
+@import "~bootstrap/scss/containers";
+@import "~bootstrap/scss/grid";
+@import "~bootstrap/scss/buttons";
+
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+@import 'src/assets/theme/theme';
+@import 'src/assets/theme/components/button';
+@import 'src/assets/theme/components/navbar';
+
+@import 'src/assets/theme/components/pagination';
+@import 'src/assets/theme/components/input';
+@import 'src/assets/theme/components/label';
+@import 'src/assets/theme/components/table';
+@import 'src/assets/theme/components/forms';
+@import 'src/assets/theme/components/select';
+@import 'src/assets/theme/components/loading';
+@import 'src/assets/theme/components/list';

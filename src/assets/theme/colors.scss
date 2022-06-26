@@ -1,0 +1,94 @@
+/* boostrap */
+
+/* rewrite boostrap colors */
+$primary: #3277DB;
+$secondary: #575757;
+$success: #2BAB40;
+$info: #13101c;
+$warning: #FEB200;
+$danger: #CF0B0B;
+$light: #f8f9fa;
+$dark: #343a40;
+
+/* custom colors */
+$primary-blue: $primary;
+$dark-magenta: #000024;
+$dark-blue: #000d3b;
+$dark-blue-medium-transparent: #000d3b99;
+$dark-blue-transparent: #000d3be6;
+$sapphire-color: #00144B;
+$sapphire-color-tint: #0D1945;
+$sapphire-color-transparent: rgba(1, 19, 49, 0.83);
+$dark-midnight-blue: #17244E;
+$dark-cyan-blue: #032950;
+$midnight-blue: #043669;
+$midnight-blue-medium-transparent: #0436697F;
+$midnight-blue-tint: #114071;
+$catalina-blue: #253D67;
+$dark-slate-gray: #384364;
+$alice-blue-transparent: #f3f6f90d;
+$ship-cove: #7482AC;
+$dark-gray: #ABACAE;
+$iron: #cfd0d2;
+$secondary-gray: $secondary;
+$light-transparent: rgba(255, 255, 255, 0.1);
+$gray-transparent: rgba(235, 235, 235, 0.05);
+$lavender: #eaecef;
+$lavender-transparent: #eaecef1a;
+$ship-cove-medium-transparent: #7482ac80;
+$ship-cove-transparent: #7482ac33;
+$backdrop-color: #00000080;
+$box-shadow-color: #0000009C;
+$moderate-lime-green: #60c070;
+$dark-green: #008D34;
+$mandy: coral;
+
+/* rewrite boostrap colors map */
+$theme-colors: (
+    primary: $primary,
+    secondary: $secondary,
+    success: $success,
+    info: $info,
+    warning: $warning,
+    danger: $danger,
+    light: $light,
+    dark: $dark,
+);
+
+/* create a new colors map */
+$project-theme-colors: (
+    dark-slate-gray: $dark-slate-gray,
+    dark-blue: $dark-blue,
+    dark-blue-medium-transparent: $dark-blue-medium-transparent,
+    midnight-blue: $midnight-blue,
+    midnight-blue-medium-transparent: $midnight-blue-medium-transparent,
+    midnight-blue-tint: $midnight-blue-tint,
+    dark-midnight-blue: $dark-midnight-blue,
+    primary-blue: $primary-blue,
+    secondary-gray: $secondary-gray,
+    dark-gray: $dark-gray,
+    iron: $iron,
+    light-transparent: $light-transparent,
+    gray-transparent: $gray-transparent,
+    ship-cove: $ship-cove,
+    catalina-blue: $catalina-blue,
+    backdrop-color: $backdrop-color,
+    box-shadow-color: $box-shadow-color,
+    sapphire-color: $sapphire-color,
+    sapphire-color-tint: $sapphire-color-tint,
+    sapphire-color-transparent: $sapphire-color-transparent,
+    alice-blue-transparent: $alice-blue-transparent,
+    ship-cove-medium-transparent: $ship-cove-medium-transparent,
+    ship-cove-transparent: $ship-cove-transparent,
+    dark-blue-transparent: $dark-blue-transparent,
+    dark-cyan-blue: $dark-cyan-blue,
+    dark-magenta: $dark-magenta,
+    lavender: $lavender,
+    lavender-transparent: $lavender-transparent,
+    moderate-lime-green: $moderate-lime-green,
+    dark-green:$dark-green,
+    mandy: $mandy
+);
+
+/*  integrating project theme with boostrap theme */
+$theme-colors: map-merge($theme-colors, $project-theme-colors);

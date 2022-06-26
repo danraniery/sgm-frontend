@@ -2,11 +2,11 @@
 
 <div *ngIf="isToShowBar()">
     <sgm-sidenav></sgm-sidenav>
-    <!--    <sgm-navbar></sgm-navbar>-->
+    <sgm-navbar></sgm-navbar>
 </div>
 
 <div [ngClass]="{'sgm-container': isToShowBar()}">
-    <div class="sgm-content">
+    <div [ngClass]="{'sgm-content' : !isFullPage()}">
         <router-outlet></router-outlet>
     </div>
 </div>

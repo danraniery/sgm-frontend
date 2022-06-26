@@ -11,6 +11,9 @@ import {TranslocoRootModule} from '../transloco-root.module';
 import {ModalActionComponent} from './components/modal-action/modal-action.component';
 import {LoadingComponent} from './components/loading/loading.component';
 import {NgSelectModule} from '@ng-select/ng-select';
+import {
+    UserCredentialsPopoverComponent
+} from './components/user-credentials-popover/user-credentials-popover.component';
 
 @NgModule({
     imports: [
@@ -28,6 +31,7 @@ import {NgSelectModule} from '@ng-select/ng-select';
         SearchComponent,
         ModalActionComponent,
         LoadingComponent,
+        UserCredentialsPopoverComponent
     ],
     exports: [
         SharedLibsModule,
@@ -38,7 +42,8 @@ import {NgSelectModule} from '@ng-select/ng-select';
         SearchComponent,
         TranslocoRootModule,
         ModalActionComponent,
-        LoadingComponent
+        LoadingComponent,
+        UserCredentialsPopoverComponent
     ]
 })
 export class SharedModule {

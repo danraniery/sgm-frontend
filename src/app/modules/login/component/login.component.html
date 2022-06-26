@@ -1,0 +1,58 @@
+<div class="login-component-body" *ngIf="!isAuthenticated()">
+    <div class="card-body">
+        <div class="col-12">
+            <div class="row justify-content-center">
+                <img class="login-card-logo" src="assets/logo/bom-destino-icon.png" alt="">
+                <label class="sgm-label">{{ 'app.name' | transloco }}</label>
+            </div>
+
+            <div class="row justify-content-center mt-4 mb-3">
+                <label class="login-card-label" transloco="login.message">Welcome</label>
+            </div>
+
+            <div class="row justify-content-center">
+                <form class="login-card-body" role="form" (ngSubmit)="login()" [formGroup]="loginForm">
+
+                    <div class="row justify-content-center">
+                        <div class="input-group mb-4">
+                            <span class="input-group-text material-icons-round md-16">person</span>
+                            <input type="text"
+                                   class="form-control"
+                                   name="username"
+                                   formControlName="username"
+                                   id="username"
+                                   data-testid="username"
+                                   placeholder="{{ 'login.loginPlaceholder' | transloco }}"
+                                   autocomplete="new-phone"
+                                   required>
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-center">
+                        <div class="input-group mb-4">
+                            <span class="input-group-text material-icons-round md-16 password-icon"
+                                  (click)="showPassword()">
+                                {{passwordIcon}}</span>
+                            <input [type]="inputPasswordType"
+                                   class="form-control"
+                                   name="password"
+                                   formControlName="password"
+                                   id="password"
+                                   data-testid="password"
+                                   placeholder="{{ 'login.passwordPlaceholder' | transloco }}"
+                                   required>
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-center mb-4">
+                        <button type="submit" class="btn btn-primary btn-sm" data-testid="submit"
+                                [disabled]="(loginForm.invalid) || isRequesting" transloco="login.button"> Sign in
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

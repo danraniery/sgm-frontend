@@ -14,11 +14,14 @@ import {TranslocoRootModule} from './transloco-root.module';
 import {NgxWebstorageModule} from 'ngx-webstorage';
 import {NgSelectModule} from '@ng-select/ng-select';
 import {SidenavComponent} from './core/components/sidenav/sidenav.component';
+import {LoginModule} from './modules/login/login.module';
+import {NavbarComponent} from './core/components/navbar/navbar.component';
 
 @NgModule({
     declarations: [
         MainComponent,
-        SidenavComponent
+        SidenavComponent,
+        NavbarComponent
     ],
     imports: [
         BrowserModule,
@@ -36,7 +39,8 @@ import {SidenavComponent} from './core/components/sidenav/sidenav.component';
         }),
         BrowserAnimationsModule,
         TranslocoRootModule,
-        NgSelectModule
+        NgSelectModule,
+        LoginModule
     ],
     providers: [],
     bootstrap: [MainComponent]

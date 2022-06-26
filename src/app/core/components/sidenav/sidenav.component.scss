@@ -1,3 +1,5 @@
+@import 'src/assets/theme/media-breakpoint-import-utils';
+
 /* common variables for sidemenu */
 $side-menu-width: 280px;
 $nav-link-dimension: 56px;
@@ -101,6 +103,9 @@ li:first-child {
 .small-logo {
     opacity: 1;
     transition: $transition-opacity-elements;
+    width: 56px;
+    height: 56px;
+    margin: -10px -20px;
 }
 
 /* labels - hidden */
@@ -199,4 +204,33 @@ li:first-child {
     cursor: unset;
     pointer-events: none;
     opacity: 0.6;
+}
+
+.opened-image {
+    margin: auto 15px auto -45px;
+}
+
+.side-nav {
+    display: flex;
+}
+
+.mobile-nav {
+    display: none;
+}
+
+.mobile-button {
+    background: transparent;
+    box-shadow: none;
+    cursor: pointer;
+}
+
+@include media-breakpoint-down(sm) {
+    .side-nav {
+        display: none;
+    }
+
+    .mobile-nav {
+        display: flex;
+
+    }
 }
