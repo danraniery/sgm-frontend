@@ -1,0 +1,19 @@
+<div class="header d-flex flex-row align-items-center mb-4">
+    <div class="d-flex flex-column py-0 px-2">
+        <h1 class="title">{{ 'user.title' | transloco }}</h1>
+        <label class="sub-title" *ngIf="!isViewMode"
+               transloco="{{isEditMode ? 'user.sub-title.edit' : 'user.sub-title.new'}}">Update/Add User</label>
+        <label class="sub-title" *ngIf="isViewMode" transloco="user.sub-title.view">User Details</label>
+    </div>
+</div>
+
+<ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+    <li [ngbNavItem]="1" data-testid="info-tab">
+        <a ngbNavLink transloco="user.form.info.title">Info</a>
+        <ng-template ngbNavContent>
+            <sgm-user-info></sgm-user-info>
+        </ng-template>
+    </li>
+</ul>
+
+<div [ngbNavOutlet]="nav"></div>

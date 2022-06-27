@@ -16,6 +16,8 @@ import {NgSelectModule} from '@ng-select/ng-select';
 import {SidenavComponent} from './core/components/sidenav/sidenav.component';
 import {LoginModule} from './modules/login/login.module';
 import {NavbarComponent} from './core/components/navbar/navbar.component';
+import {AuthGuard} from './core/services/auth.guard';
+import {PasswordModule} from './modules/password/password.module';
 
 @NgModule({
     declarations: [
@@ -26,12 +28,13 @@ import {NavbarComponent} from './core/components/navbar/navbar.component';
     imports: [
         BrowserModule,
         AppRoutingModule,
-        CoreModule,
-        SharedModule,
         HttpClientModule,
         NgbModule,
+        CoreModule,
+        SharedModule,
+        LoginModule,
+        PasswordModule,
         NgxWebstorageModule.forRoot({prefix: 'sgm', separator: '-', caseSensitive: true}),
-        HttpClientModule,
         ToastrModule.forRoot({
             timeOut: TOAST_TIME_OUT,
             positionClass: 'toast-bottom-right',
@@ -39,10 +42,9 @@ import {NavbarComponent} from './core/components/navbar/navbar.component';
         }),
         BrowserAnimationsModule,
         TranslocoRootModule,
-        NgSelectModule,
-        LoginModule
+        NgSelectModule
     ],
-    providers: [],
+    providers: [AuthGuard],
     bootstrap: [MainComponent]
 })
 export class AppModule {

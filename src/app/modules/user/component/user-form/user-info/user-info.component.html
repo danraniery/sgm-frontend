@@ -1,0 +1,235 @@
+<section id="user-form">
+    <form (ngSubmit)="save()" *ngIf="formGroup" [formGroup]="formGroup" class="form-container">
+        <label class="mb-4">{{ label | transloco }}</label>
+        <div class="row mb-3 mt-3">
+            <div class="col-sm-6 col-12">
+                <div class="row">
+                    <div class="col mb-3">
+                        <label class="d-block required-field">{{ 'user.form.info.name' | transloco }}</label>
+                        <div class="input-group w-100">
+                            <input (blur)="removeEmptySpaces('name')"
+                                   (keydown)="checkEmptySpaces($event, 'name')"
+                                   (keyup)="checkEmptySpaces($event, 'name')"
+                                   class="form-control"
+                                   data-testid="first-name-input"
+                                   formControlName="name"
+                                   maxlength="{{constants.NAME_LENGTH_MAX + 1}}"
+                                   minlength="{{constants.NAME_LENGTH_MIN}}"
+                                   name="name"
+                                   placeholder="{{ 'user.form.info.namePlaceholder' | transloco }}"
+                                   required
+                                   type="text"
+                                   (ngModelChange)="validatePassword()">
+                        </div>
+                        <div *ngIf="formGroup.get('name')?.invalid && formGroup.get('name')?.dirty ||
+                            formGroup.get('name')?.touched" id="name">
+                            <small *ngIf="formGroup.get('name')?.errors?.required"
+                                   class="form-text validation-message"
+                                   transloco="message.required">
+                                Required field.
+                            </small>
+                            <small *ngIf="formGroup.get('name')?.errors?.minlength"
+                                   [translocoParams]="{min : constants.NAME_LENGTH_MIN}"
+                                   class="form-text validation-message"
+                                   transloco="message.minLength">
+                                This field must be at least 2 characters.
+                            </small>
+                            <small *ngIf="formGroup.get('name')?.hasError('maxlength')"
+                                   [translocoParams]="{max : constants.NAME_LENGTH_MAX}"
+                                   class="form-text validation-message"
+                                   transloco="message.maxLength">
+                                This field cannot be longer than 100 characters.
+                            </small>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label class="d-block required-field">{{ 'user.form.info.username' | transloco }}</label>
+                        <div class="input-group w-100">
+                            <input (keydown.space)="$event.preventDefault()" class="form-control"
+                                   data-testid="username-input" formControlName="username"
+                                   maxlength="{{constants.USER_NAME_LENGTH_MAX + 1}}"
+                                   minlength="{{constants.USER_NAME_LENGTH_MIN}}"
+                                   name="username"
+                                   placeholder="{{ 'user.form.info.usernamePlaceholder' | transloco }}"
+                                   required
+                                   type="text"
+                                   (ngModelChange)="validatePassword()">
+                        </div>
+                        <div *ngIf="formGroup.get('username')?.invalid && formGroup.get('username')?.dirty ||
+                        formGroup.get('username')?.touched" id="username">
+                            <small *ngIf="formGroup.get('username')?.errors?.required"
+                                   class="form-text validation-message"
+                                   transloco="message.required">
+                                Required field.
+                            </small>
+                            <small *ngIf="formGroup.get('username')?.errors?.minlength"
+                                   [translocoParams]="{min : constants.USER_NAME_LENGTH_MIN}"
+                                   class="form-text validation-message"
+                                   transloco="message.minLength">
+                                This field must be at least 2 characters.
+                            </small>
+                            <small *ngIf="formGroup.get('username')?.hasError('maxlength')"
+                                   [translocoParams]="{max : constants.USER_NAME_LENGTH_MAX}"
+                                   class="form-text validation-message"
+                                   transloco="message.maxLength">
+                                This field cannot be longer than 256 characters.
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label class="d-block required-field">{{ 'user.form.info.profile' | transloco }}</label>
+                        <div class="input-group w-100">
+                            <ng-select (scrollToEnd)="scrollToEnd()"
+                                       [clearAllText]="'ngSelect.clearAllText' | transloco"
+                                       [closeOnSelect]="true"
+                                       [items]="profiles"
+                                       [multiple]="false" [searchable]="false"
+                                       bindLabel="name"
+                                       class="form-control theme-custom-select"
+                                       data-testid="profile-select"
+                                       formControlName="profile"
+                                       placeholder="{{ 'user.form.info.profilePlaceholder' | transloco }}">
+                                <ng-template let-item="item" ng-option-tmp>
+                                    <div [title]="item.name">{{ item.name}}</div>
+                                </ng-template>
+                            </ng-select>
+                        </div>
+                        <div *ngIf="formGroup.get('profile')?.invalid && formGroup.get('profile')?.dirty ||
+                             formGroup.get('profile')?.touched">
+                            <small *ngIf="formGroup.get('profile')?.errors?.required"
+                                   class="form-text validation-message"
+                                   transloco="message.required">
+                                Required field.
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-12">
+                <div class="row">
+                    <div class="col mb-3">
+                        <label class="d-block" [ngClass]="{'required-field': isPasswordRequired()}">
+                            {{ 'user.form.info.password' | transloco }}</label>
+                        <div class="input-group w-100">
+                            <span (click)="!isViewMode && showPassword()"
+                                  [ngClass]="{'btn-password-disabled': isViewMode, 'cursor-pointer': !isViewMode}"
+                                  class="input-group-text material-icons-round md-24 password-icon cursor-pointer
+                            pt-0 pb-0">
+                            {{passwordIcon}}
+                        </span>
+                            <input [type]="inputPasswordType"
+                                   class="form-control"
+                                   data-testid="password-input"
+                                   formControlName="password"
+                                   name="password"
+                                   placeholder="{{ 'user.form.info.passwordPlaceholder' | transloco }}"
+                                   (ngModelChange)="updatePasswordValidators()">
+                        </div>
+                        <div *ngIf="formGroup.get('password').touched || formGroup.get('password').dirty">
+                            <small *ngIf="formGroup.get('password')?.errors?.required"
+                                   class="form-text validation-message"
+                                   transloco="message.required">
+                                Required field.
+                            </small>
+
+                            <small *ngIf="!formGroup.get('password')?.errors?.required &&
+                             formGroup.get('password')?.errors?.minlength"
+                                   class="form-text validation-message"
+                                   transloco="message.invalidPasswordSize">
+                                The password must contain 7 characters or more.
+                            </small>
+
+                            <small *ngIf="!formGroup.get('password')?.errors?.required &&
+                             formGroup.get('password').errors?.invalidPassword &&
+                             !formGroup.get('password')?.errors?.minlength"
+                                   class="form-text validation-message">
+                                {{ formGroup.get('password').errors?.invalidPassword | transloco }}
+                            </small>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label class="d-block" [ngClass]="{'required-field': isPasswordRequired()}">
+                            {{ 'user.form.info.confirmPassword' | transloco }}</label>
+                        <div class="input-group w-100">
+                            <span
+                                    (click)="!isViewMode && showConfirmPassword()"
+                                    [ngClass]="{'btn-password-disabled': isViewMode, 'cursor-pointer': !isViewMode}"
+                                    class="input-group-text material-icons-round md-24 password-icon cursor-pointer pt-0 pb-0">
+                                {{confirmPasswordIcon}}
+                            </span>
+                            <input [type]="inputConfirmPasswordType"
+                                   class="form-control"
+                                   data-testid="confirm-password-input"
+                                   formControlName="confirmPassword"
+                                   name="confirmPassword"
+                                   placeholder="{{ 'user.form.info.confirmPasswordPlaceholder' | transloco }}"
+                                   (ngModelChange)="updatePasswordValidators()">
+                        </div>
+                        <div *ngIf="!isPasswordEquals()">
+                            <small class="form-text validation-message" transloco="message.invalidConfirmPassword">
+                                The passwords entered are not the same.
+                            </small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-3 mb-3 d-flex">
+                    <div class="col-auto mb-3 m-auto">
+                        <div class="row p-0">
+                            <div class="col-auto p-0">
+                                <input class="check" data-testid="status-checkbox" formControlName="activated"
+                                       id="activated" name="activated" type="checkbox">
+                            </div>
+                            <div class="col-auto checkbox-label-container">
+                                <label class="checkbox-label" for="activated">{{ 'status.active' | transloco }}</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-auto mb-3 m-auto">
+                        <div class="row p-0">
+                            <div class="col-auto p-0">
+                                <input class="check" data-testid="type-checkbox" formControlName="userType"
+                                       id="userType" name="userType" type="checkbox">
+                            </div>
+                            <div class="col-auto checkbox-label-container">
+                                <label class="checkbox-label" for="userType">{{ 'user.form.info.type' | transloco }}</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-auto mb-3 m-auto">
+                        <div class="row p-0">
+                            <div class="col-auto p-0">
+                                <input class="check" data-testid="rural-checkbox" formControlName="ruralProducer"
+                                       id="ruralProducer" name="ruralProducer" type="checkbox">
+                            </div>
+                            <div class="col-auto checkbox-label-container">
+                                <label class="checkbox-label" for="ruralProducer">{{ 'user.form.info.ruralProducer' | transloco }}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-around justify-content-sm-start">
+            <button class="btn btn-secondary mr-2 me-3" type="button" data-testid="back-button"
+                    (click)="goToUserListScreen()">
+                <span transloco="{{ isEditMode ? 'button.cancel' : 'button.back'}}">Cancel/Back</span>
+            </button>
+
+            <button *ngIf="!isViewMode" class="btn btn-primary mr-2" type="submit"
+                    [disabled]="formGroup.invalid || isLoading" data-testid="submit-button">
+                <span transloco="{{ !isEditMode ? 'button.save' : 'button.update'}}">Save/Update</span>
+            </button>
+        </div>
+    </form>
+</section>

@@ -31,7 +31,7 @@
         <li (mouseenter)="this.opened = true"
             class="nav-item d-flex justify-content-start align-items-center"
             *sgmHasAnyAuthority="['ROLE_USER_MANAGEMENT', 'ROLE_AUDITOR']"
-            routerLink="/users"
+            routerLink="users"
             data-testid="menu-users-button">
             <a class="d-flex align-items-center nav-link py-3"
                routerLinkActive="active" (click)="opened=false">
@@ -43,7 +43,7 @@
         <li (mouseenter)="this.opened = true"
             class="nav-item d-flex justify-content-start align-items-center"
             *sgmHasAnyAuthority="['ROLE_PROFILE_MANAGEMENT', 'ROLE_AUDITOR']"
-            routerLink="/settings"
+            routerLink="settings"
             data-testid="menu-configurations-button">
             <a class="d-flex align-items-center nav-link py-3"
                routerLinkActive="active" (click)="opened=false">
@@ -99,10 +99,10 @@
         <li (mouseenter)="this.opened = true"
             class="nav-item d-flex justify-content-start align-items-center"
             *sgmHasAnyAuthority="['ROLE_USER_MANAGEMENT', 'ROLE_AUDITOR']"
-            routerLink="/users"
+            routerLink="users"
             data-testid="menu-users-button">
             <a class="d-flex align-items-center nav-link py-3"
-               routerLinkActive="active" (click)="opened=false">
+               routerLinkActive="active" (click)="navigate('/users'); opened=false">
                 <span class="material-icons-round md-24">account_circle</span>
                 <span class="menu-label" [ngClass]="opened ? 'opened' : 'closed'"
                       transloco="sidenav.users">Users</span>
@@ -111,10 +111,10 @@
         <li (mouseenter)="this.opened = true"
             class="nav-item d-flex justify-content-start align-items-center"
             *sgmHasAnyAuthority="['ROLE_PROFILE_MANAGEMENT', 'ROLE_AUDITOR']"
-            routerLink="/settings"
+            routerLink="settings"
             data-testid="menu-configurations-button">
             <a class="d-flex align-items-center nav-link py-3"
-               routerLinkActive="active" (click)="opened=false">
+               routerLinkActive="active" (click)="navigate('/settings'); opened=false">
                 <span class="material-icons-round md-24">manage_accounts</span>
                 <span class="menu-label" [ngClass]="opened ? 'opened' : 'closed'"
                       transloco="sidenav.settings">Settings</span>

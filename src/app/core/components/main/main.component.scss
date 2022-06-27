@@ -1,3 +1,5 @@
+@import 'src/assets/theme/media-breakpoint-import-utils';
+
 .sgm-container {
     padding-left: 80px;
     padding-top: 120px;
@@ -7,4 +9,11 @@
 
 .sgm-content {
     padding: 50px;
+}
+
+@include media-breakpoint-down(sm) {
+    .sgm-container {
+        padding-left: 0;
+        padding-top: 60px;
+    }
 }

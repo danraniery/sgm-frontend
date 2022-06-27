@@ -1,0 +1,144 @@
+<section id="user-list-container">
+    <h1 class="title mb-2" transloco="user.title">Users</h1>
+    <div class="row justify-content-end">
+        <div class="col-auto add-button" *sgmHasAnyAuthority="['ROLE_USER_MANAGEMENT']">
+            <button type="button" class="btn btn-primary btn-register d-flex align-items-center mt-3 mb-3"
+                    data-testid="create-button" (click)="goToNewUserScreen()">
+                <span class="material-icons-outlined">add</span>
+                <span class="web-content" transloco="user.button">User</span>
+            </button>
+        </div>
+    </div>
+    <table class="table table-striped web-content">
+        <thead>
+        <tr>
+            <th scope="col" data-testid="sort-btn-user" (click)="sort('name')"
+                [ngClass]="{'hover' : orderBy === 'name'}">
+                <span transloco="user.list.user">User</span>
+                <span class="material-icons-outlined sort-icon">{{getSortIcon('name')}}</span>
+            </th>
+            <th scope="col" data-testid="sort-btn-type" (click)="sort('type')"
+                [ngClass]="{'hover' : orderBy === 'type'}">
+                <span transloco="user.list.type">Type</span>
+                <span class="material-icons-outlined sort-icon">{{getSortIcon('type')}}</span>
+            </th>
+            <th scope="col" data-testid="sort-btn-rural" (click)="sort('ruralProducer')"
+                [ngClass]="{'hover' : orderBy === 'ruralProducer'}">
+                <span transloco="user.list.ruralProducer">Rural Producer</span>
+                <span class="material-icons-outlined sort-icon">{{getSortIcon('ruralProducer')}}</span>
+            </th>
+            <th scope="col" data-testid="sort-btn-status" (click)="sort('activated')"
+                [ngClass]="{'hover' : orderBy === 'activated'}">
+                <span transloco="generalFields.status">Status</span>
+                <span class="material-icons-outlined sort-icon">{{getSortIcon('activated')}}</span>
+            </th>
+            <th scope="col" class="options-col" transloco="generalFields.options">Options</th>
+        </tr>
+        </thead>
+        <tbody *ngIf="isLoading">
+        <tr>
+            <td colspan="6">
+                <div class="d-flex justify-content-center align-items-center">
+                    <div class="back-loader-table">
+                        <div class="spinner-table">
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+        <tbody *ngIf="!isLoading">
+        <tr *ngFor="let user of items; let index = index" [attr.data-testid]="'row-' + index">
+            <td (click)="redirectByUrl(buildEditOrViewRoute(user.id))"
+                class="text-truncate cursor-pointer"
+                title="{{user.name}}">{{ user.name }}</td>
+            <td class="text-truncate">{{ (user.type === 'legal_entity' ? 'user.list.legalEntity' : 'user.list.naturalPerson') | transloco }}</td>
+            <td class="text-truncate">{{ (user.ruralProducer ? 'user.list.yes' : 'user.list.no') | transloco }}</td>
+            <td>
+                <sgm-toggle-status id="toggle-status-+{{index}}"
+                                   [inputToggleId]='index'
+                                   [activated]="user.activated"
+                                   [blocked]="user.blocked"
+                                   (toggleAction)="changeStatus(user)"
+                                   [permissions]="['ROLE_USER_MANAGEMENT']"
+                                   data-testid="status-toggle-button">
+                </sgm-toggle-status>
+            </td>
+            <td class="d-flex align-items-center">
+                <div class="action-icons-container" *sgmHasAnyAuthority="['ROLE_AUDITOR', 'ROLE_USER_MANAGEMENT']">
+                    <button class="btn btn-icon" data-testid="view-button" (click)="gotToViewScreen(user.id)">
+                        <span class="material-icons-outlined action-icons">visibility</span>
+                    </button>
+                </div>
+                <div class="action-icons-container" *sgmHasAnyAuthority="['ROLE_USER_MANAGEMENT']">
+                    <button class="btn btn-icon" (click)="gotToEditScreen(user.id)" data-testid="edit-button">
+                        <span class="material-icons-outlined action-icons" data-testid="edit-button">edit</span>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <sgm-pagination [itemsPerPage]="itemsPerPage" [page]="page" [totalItems]="totalItems"
+                    (pageChange)="loadItemsPage($event)">
+    </sgm-pagination>
+
+    <div class="mt-2 mobile-table mobile-content"
+         infiniteScroll
+         [infiniteScrollDistance]="2"
+         [infiniteScrollThrottle]="50"
+         (scrolled)="loadProgressPageInfiniteScroll()">
+
+        <table *ngFor="let user of items; let index = index" [attr.data-testid]="'row-' + index"
+               class="mt-3 table table-striped">
+            <thead class="mobile">
+            <tr>
+                <th scope="col" class="cursor-pointer" (click)="redirectByUrl(buildEditOrViewRoute(user.id))"
+                    colspan="2">{{user.name}}</th>
+            </tr>
+            </thead>
+            <tbody *ngIf="isLoading">
+            <tr>
+                <td colspan="4">
+                    <div class="d-flex justify-content-center align-items-center">
+                        <div class="back-loader-table">
+                            <div class="spinner-table">
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tbody>
+            <tr>
+                <td class="text-truncate" transloco="user.list.type">Type</td>
+                <td class="text-truncate">{{ (user.type === 'legal_entity' ? 'user.list.legalEntity' : 'user.list.naturalPerson') | transloco }}</td>
+            </tr>
+            <tr>
+                <td class="text-truncate" transloco="user.list.ruralProducer">Rural Producer</td>
+                <td class="text-truncate">{{ (user.ruralProducer ? 'user.list.yes' : 'user.list.no') | transloco }}</td>
+            </tr>
+            <tr>
+                <td class="text-truncate" transloco="generalFields.status">Status</td>
+                <td>
+                    <sgm-toggle-status id="toggle-status-+{{index}}"
+                                       [inputToggleId]='index'
+                                       [activated]="user.activated"
+                                       (toggleAction)="changeStatus(user)"
+                                       [permissions]="['ROLE_USER_MANAGEMENT']"
+                                       data-testid="status-toggle-button">
+                    </sgm-toggle-status>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="!totalItems && !isLoading">
+        <div class="d-flex justify-content-center align-items-center mb-5 mt-5">
+            <span *ngIf="noSearch(); else elseBlock">{{ 'message.noItems' | transloco }}</span>
+            <ng-template #elseBlock>
+                <span>{{ 'message.noResults' | transloco }}</span>
+            </ng-template>
+        </div>
+    </div>
+</section>

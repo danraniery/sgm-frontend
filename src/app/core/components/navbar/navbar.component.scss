@@ -1,5 +1,9 @@
 @import 'src/assets/theme/media-breakpoint-import-utils';
 
+.navbar-brand {
+    margin-left: -10px;
+}
+
 @include media-breakpoint-down(sm) {
     .navbar {
         padding-left: 20px;

@@ -76,7 +76,6 @@ export const REQUIRED_CHANGE_PASSWORD = 'requiredChangePassword';
  * Authentication Constants
  */
 export const BEARER = 'Bearer ';
-export const ACCESS_DENIED_URL = 'access-denied';
 export const DEFAULT_SERVER_NOT_REACHABLE_MESSAGE = 'Unreachable server.';
 export const DEFAULT_SERVER_NOT_REACHABLE_KEY = 'message.serverNotReachable';
 export const DEFAULT_ACTION_NOT_REACHABLE_KEY = 'message.actionNotReachable';

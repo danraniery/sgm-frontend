@@ -14,6 +14,7 @@ import {NgSelectModule} from '@ng-select/ng-select';
 import {
     UserCredentialsPopoverComponent
 } from './components/user-credentials-popover/user-credentials-popover.component';
+import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 
 @NgModule({
     imports: [
@@ -21,7 +22,8 @@ import {
         CommonModule,
         NgbPaginationModule,
         TranslocoRootModule,
-        NgSelectModule
+        NgSelectModule,
+        InfiniteScrollModule
     ],
     declarations: [
         ToggleStatusComponent,
@@ -43,7 +45,8 @@ import {
         TranslocoRootModule,
         ModalActionComponent,
         LoadingComponent,
-        UserCredentialsPopoverComponent
+        UserCredentialsPopoverComponent,
+        InfiniteScrollModule
     ]
 })
 export class SharedModule {

@@ -1,0 +1,18 @@
+<h1 class="title mb-2" transloco="sidenav.settings">Settings</h1>
+<ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+    <li [ngbNavItem]="'profiles'" data-testid="profile-tab">
+        <a ngbNavLink transloco="profile.tab.profiles">Profiles</a>
+        <ng-template ngbNavContent>
+            <sgm-profile-list></sgm-profile-list>
+        </ng-template>
+    </li>
+    <li [ngbNavItem]="'permissions'" data-testid="permissions-tab">
+        <a ngbNavLink transloco="profile.tab.permissions">Permissions</a>
+        <ng-template ngbNavContent>
+            <sgm-authority-list></sgm-authority-list>
+        </ng-template>
+    </li>
+</ul>
+
+<div [ngbNavOutlet]="nav"></div>
+

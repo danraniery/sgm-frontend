@@ -92,6 +92,11 @@ export class AccountService {
         return this.storageService.getRequiredChangePassword();
     }
 
+    updateUserInfoInPopoverMenu(identity: any) {
+        this.userIdentity.name = identity.name;
+        this.authenticationState.next(this.userIdentity);
+    }
+
     disconnectUser() {
         this.authServerProvider.logout().subscribe(() => {
         }, () => {

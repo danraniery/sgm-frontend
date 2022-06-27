@@ -10,6 +10,9 @@ export interface IUser {
     blocked?: boolean;
     createdDate?: string;
     profile?: IProfile;
+    profileId?: any;
+    ruralProducer?: boolean;
+    type?: string;
 }
 
 export class User implements IUser {
@@ -22,6 +25,9 @@ export class User implements IUser {
     blocked?: boolean;
     createdDate?: string;
     profile?: IProfile;
+    profileId?: any;
+    ruralProducer?: boolean;
+    type?: string;
 }
 
 export class UserList implements IUser {
@@ -29,4 +35,6 @@ export class UserList implements IUser {
     name?: string;
     activated?: boolean;
     blocked?: boolean;
+    type?: string;
+    ruralProducer?: boolean;
 }

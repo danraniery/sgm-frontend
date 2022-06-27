@@ -68,7 +68,7 @@
         "logout": "Sair",
         "rule": {
             "title1": "Sua senha deve:",
-            "title2": "E conter ao menos 03 desses tipos:",
+            "title2": "E conter:",
             "size": "Ser de tamanho mínimo de 07 caracteres!",
             "number": "Conter no mímino 01 número!",
             "uppercase": "Conter no mímino 01 letra maiúscula!",
@@ -87,7 +87,13 @@
             "view": "Detalhes do Usuário"
         },
         "list": {
-            "user": "Usuário"
+            "user": "Usuário",
+            "type": "Tipo",
+            "ruralProducer": "Produtor Rural",
+            "legalEntity": "Pessoa Jurídica",
+            "naturalPerson": "Pessoa Física",
+            "yes": "Sim",
+            "no": "Não"
         },
         "form": {
             "label": {
@@ -96,8 +102,9 @@
                 "view": "Aqui você pode visualizar as informações do usuário"
             },
             "info": {
-                "nome": "Nome completo",
-                "firstNamePlaceholder": "Nome completo",
+                "title": "Dados do Usuário",
+                "name": "Nome completo",
+                "namePlaceholder": "Nome completo",
                 "profile": "Perfil",
                 "profilePlaceholder": "Perfil",
                 "username": "Username",
@@ -105,7 +112,9 @@
                 "password": "Senha",
                 "passwordPlaceholder": "Senha",
                 "confirmPassword": "Confirmação de Senha",
-                "confirmPasswordPlaceholder": "Confirmação de Senha"
+                "confirmPasswordPlaceholder": "Confirmação de Senha",
+                "ruralProducer": "Produtor Rural",
+                "type": "Pessoa Jurídica"
             },
             "messages": {
                 "changedProfile" : "Seu perfil foi alterado. A alteração entrará em vigor no próximo login."

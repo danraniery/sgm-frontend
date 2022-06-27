@@ -8,6 +8,16 @@ const routes: Routes = [
         loadChildren: () => import('./modules/home/home.module').then((mod) => mod.HomeModule),
         pathMatch: 'full',
         canActivate: [AuthGuard]
+    },
+    {
+        path: 'users',
+        loadChildren: () => import('./modules/user/user.module').then((mod) => mod.UserModule),
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'settings',
+        loadChildren: () => import('./modules/settings/settings.module').then((mod) => mod.SettingsModule),
+        canActivate: [AuthGuard]
     }
 ];
 

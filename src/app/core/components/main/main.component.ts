@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {Account} from '../../../shared/models/account.model';
 import {AccountService} from '../../services/account.service';
@@ -11,7 +11,7 @@ import {TranslocoService} from '@ngneat/transloco';
     templateUrl: './main.component.html',
     styleUrls: ['./main.component.scss']
 })
-export class MainComponent {
+export class MainComponent implements OnInit {
 
     loggedAccount: Account | undefined;
     updatePassword: boolean = false;

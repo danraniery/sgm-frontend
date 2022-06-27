@@ -1,0 +1,49 @@
+<table class="table table-striped web-content">
+    <thead>
+    <tr>
+        <th scope="col cursor-default" transloco="profile.form.name">Name</th>
+        <th scope="col cursor-default" transloco="profile.form.description">Description</th>
+    </tr>
+    </thead>
+    <tbody *ngIf="isLoading">
+    <tr>
+        <td colspan="2">
+            <div class="d-flex justify-content-center align-items-center">
+                <div class="back-loader-table">
+                    <div class="spinner-table">
+                    </div>
+                </div>
+            </div>
+        </td>
+    </tr>
+    </tbody>
+    <tbody *ngIf="!isLoading">
+    <tr *ngFor="let authority of authorities; let index = index" [attr.data-testid]="'row-' + index">
+        <td>{{ 'profile.authorities.name.' + authority | transloco }}</td>
+        <td class="text-truncate">{{ 'profile.authorities.description.' + authority | transloco }}</td>
+    </tr>
+    </tbody>
+</table>
+
+<div class="mt-2 mobile-table mobile-content"
+     infiniteScroll
+     [infiniteScrollDistance]="2"
+     [infiniteScrollThrottle]="50">
+
+    <table *ngFor="let authority of authorities; let index = index" [attr.data-testid]="'row-' + index"
+           class="mt-3 table table-striped">
+        <thead class="mobile">
+        <tr>
+            <th scope="col" colspan="2">{{ 'profile.authorities.name.' + authority | transloco}}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="text-truncate" transloco="profile.form.description">Description</td>
+            <td>{{'profile.authorities.description.' + authority | transloco}}</td>
+        </tr>
+        <tr>
+        </tr>
+        </tbody>
+    </table>
+</div>

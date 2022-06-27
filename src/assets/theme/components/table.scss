@@ -1,3 +1,5 @@
+@import 'src/assets/theme/media-breakpoint-import-utils';
+
 table {
     background-color: var(--bs-dark-blue);
     border-radius: 4px;
@@ -98,4 +100,44 @@ table {
     pointer-events: none;
     cursor: not-allowed;
     opacity: 0.5;
+}
+
+.mobile-content {
+    display: none;
+}
+
+.mobile-table {
+    .cursor-pointer {
+        cursor: pointer;
+    }
+
+    table, tr, td {
+        border: none;
+    }
+
+    thead {
+        background: var(--bs-dark-blue);
+    }
+
+    table {
+        border-radius: 0;
+        background: transparent;
+        box-shadow: 0 3px 6px #00000029;
+        text-align: center;
+    }
+
+    sgm-toggle-status {
+        display: flex;
+        justify-content: center;
+        margin: 15px;
+    }
+}
+
+@include media-breakpoint-down(md) {
+    .web-content {
+        display: none;
+    }
+    .mobile-content {
+        display: contents;
+    }
 }

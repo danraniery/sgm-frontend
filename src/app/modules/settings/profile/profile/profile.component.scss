@@ -1,0 +1,12 @@
+@import 'src/assets/theme/media-breakpoint-import-utils';
+
+table {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+@include media-breakpoint-down(md) {
+    .add-button {
+        margin-top: -150px;
+    }
+}
