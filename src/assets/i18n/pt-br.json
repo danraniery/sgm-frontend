@@ -190,8 +190,8 @@
         "users": "Usuários",
         "settings": "Configurações",
         "services": "Serviços",
-        "citizen": "Cidadão",
-        "health": "Saúde",
+        "citizen": "Serviços aos Cidadãos",
+        "health": "Serviços de Saúde",
         "editProfile": "Editar conta",
         "editPassword": "Alterar Senha",
         "logout": "Sair"
@@ -237,18 +237,25 @@
         },
         "profiles": {
             "SuperAdmin": "Perfil para gerenciar todas as entidades dos Módulos da Solução.",
-            "Auditor": "Perfil com acesso de leitura para auditoria dos Módulos de Solução."
+            "Auditor": "Perfil com acesso de leitura para auditoria dos Módulos de Solução.",
+            "Habitante": "Perfil para acessar os serviços da Solução."
         },
         "authorities": {
             "name": {
                 "AUDITOR": "Acesso como Auditor",
                 "PROFILE_MANAGEMENT": "Gerenciar Perfis",
-                "USER_MANAGEMENT": "Gerenciar Usuários"
+                "USER_MANAGEMENT": "Gerenciar Usuários",
+                "SERVICE_MANAGEMENT": "Gerenciar Serviços",
+                "VIEW_CITIZEN_SERVICES": "Acessar Serviços para Cidadãos",
+                "VIEW_HEALTH_SERVICES": "Acessar Serviços de Saúde"
             },
             "description": {
                 "AUDITOR": "Permite que o usuário visualize todas as entidades do sistema.",
                 "PROFILE_MANAGEMENT": "Permite que o usuário cadastre, busque, edite e remova perfis do sistema.",
-                "USER_MANAGEMENT": "Permite que o usuário cadastre, busque, edite e remova usuários do sistema."
+                "USER_MANAGEMENT": "Permite que o usuário cadastre, busque, edite e remova usuários do sistema.",
+                "SERVICE_MANAGEMENT": "Permite que o usuário cadastre, busque, edite e remova serviços do sistema.",
+                "VIEW_CITIZEN_SERVICES": "Permite que o usuário acesse os serviços destinados aos Cidadãos",
+                "VIEW_HEALTH_SERVICES": "Permite que o usuário acesse os serviços de saúde."
             }
         }
     }

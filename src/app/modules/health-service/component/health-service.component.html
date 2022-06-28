@@ -1,0 +1,32 @@
+<section id="user-list-container">
+    <h1 class="title mb-2" transloco="sidenav.health">Services</h1>
+
+    <div class="mt-4 col-12 d-flex justify-content-around flex-wrap"
+         infiniteScroll
+         [infiniteScrollDistance]="2"
+         [infiniteScrollThrottle]="50"
+         (scrolled)="loadProgressPageInfiniteScroll()">
+
+        <div *ngFor="let service of items; let index = index" [attr.data-testid]="'row-' + index"
+             class="col-4 d-flex text-center service-card"
+             (click)="navigate(service.path || '', service.localPath || false)">
+            <label> {{ service.name }} </label>
+        </div>
+
+        <div *ngIf="isLoading" class="d-flex justify-content-center align-items-center">
+            <div class="back-loader-table">
+                <div class="spinner-table">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="!totalItems && !isLoading">
+        <div class="d-flex justify-content-center align-items-center mb-5 mt-5">
+            <span *ngIf="noSearch(); else elseBlock">{{ 'message.noItems' | transloco }}</span>
+            <ng-template #elseBlock>
+                <span>{{ 'message.noResults' | transloco }}</span>
+            </ng-template>
+        </div>
+    </div>
+</section>

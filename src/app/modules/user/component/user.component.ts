@@ -112,7 +112,9 @@ export class UserComponent extends BaseListComponent<UserList> implements OnDest
 
     loadProgressPageInfiniteScroll(): void {
         this.page = this.page + 1;
-        this.loadAllWithInfinit();
+        if (this.totalItems < this.items.length) {
+            this.loadAllWithInfinit();
+        }
     }
 
 }

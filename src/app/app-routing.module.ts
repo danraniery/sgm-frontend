@@ -23,6 +23,16 @@ const routes: Routes = [
         path: 'settings',
         loadChildren: () => import('./modules/settings/settings.module').then((mod) => mod.SettingsModule),
         canActivate: [AuthGuard]
+    },
+    {
+        path: 'citizen-services',
+        loadChildren: () => import('./modules/citizen-service/citizen-service.module').then((mod) => mod.CitizenServiceModule),
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'health-services',
+        loadChildren: () => import('./modules/health-service/health-service.module').then((mod) => mod.HealthServiceModule),
+        canActivate: [AuthGuard]
     }
 ];
 

@@ -114,7 +114,9 @@ export class SgmServiceComponent extends BaseListComponent<SGMServiceList> imple
 
     loadProgressPageInfiniteScroll(): void {
         this.page = this.page + 1;
-        this.loadAllWithInfinit();
+        if (this.totalItems < this.items.length) {
+            this.loadAllWithInfinit();
+        }
     }
 
 }

@@ -71,22 +71,19 @@ export abstract class BaseListComponent<T> implements OnInit {
     };
 
     loadAllWithInfinit(): void {
-        if (this.totalItems < this.items.length) {
-            this.showLoad();
-            this.service.query(this.getParams()).subscribe((value: any) => {
-                this.items = [...this.items, ...value.body.content];
-                this.totalItems = value.body.totalElements;
-                this.closeLoad();
-                this.onLoadCompleted();
-                if (!this.totalItems) {
-                    this.handleEmptyList();
-                }
-            }, (error) => {
-                this.feedbackService.showErrorFromServer(error);
-                this.closeLoad();
-            });
-        }
-
+        this.showLoad();
+        this.service.query(this.getParams()).subscribe((value: any) => {
+            this.items = [...this.items, ...value.body.content];
+            this.totalItems = value.body.totalElements;
+            this.closeLoad();
+            this.onLoadCompleted();
+            if (!this.totalItems) {
+                this.handleEmptyList();
+            }
+        }, (error) => {
+            this.feedbackService.showErrorFromServer(error);
+            this.closeLoad();
+        });
     };
 
     showModalStatusConfirmation(model: T, modalTitle: string, modalBody: string, toastMessage: string) {

@@ -19,9 +19,17 @@ export class SGMService implements ISGMService {
     localPath?: boolean;
 }
 
-export class SGMServiceList implements IUser {
+export class SGMServiceList implements ISGMService {
     id?: any;
     name?: string;
     activated?: boolean;
     path?: string;
+}
+
+export class SGMServiceCard implements IUser {
+    id?: any;
+    name?: string;
+    path?: string;
+    localPath?: boolean;
+    activated?: boolean;
 }
