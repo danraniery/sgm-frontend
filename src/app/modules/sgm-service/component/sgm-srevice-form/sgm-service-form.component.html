@@ -1,0 +1,19 @@
+<div class="header d-flex flex-row align-items-center mb-4">
+    <div class="d-flex flex-column py-0 px-2">
+        <h1 class="title">{{ 'service.title' | transloco }}</h1>
+        <label class="sub-title" *ngIf="!isViewMode"
+               transloco="{{isEditMode ? 'service.sub-title.edit' : 'service.sub-title.new'}}">Update/Add Service</label>
+        <label class="sub-title" *ngIf="isViewMode" transloco="service.sub-title.view">Service Details</label>
+    </div>
+</div>
+
+<ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+    <li [ngbNavItem]="1" data-testid="info-tab">
+        <a ngbNavLink transloco="service.form.info.title">Info</a>
+        <ng-template ngbNavContent>
+            <sgm-service-info></sgm-service-info>
+        </ng-template>
+    </li>
+</ul>
+
+<div [ngbNavOutlet]="nav"></div>

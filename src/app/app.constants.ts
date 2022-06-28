@@ -21,7 +21,7 @@ export const MIN_SIZE_PASSWORD = 7;
 export const API = 'api';
 export const SERVER_API_URL = environment.API_BASE_URL;
 export const API_URL = `${API}/`;
-export const ACTIVATED = `/activated`;
+export const ACTIVATED = '/activated';
 export const API_USERS_URL = `${SERVER_API_URL}${API_URL}users`;
 export const API_ACCOUNT_URL = `${API_URL}account`;
 export const API_PROFILE_URL = `${API_URL}profiles`;
@@ -29,6 +29,8 @@ export const API_AUTHENTICATE_URL = `${API_URL}authenticate`;
 export const API_CHANGE_PASSWORD_URL = `${SERVER_API_URL + API_ACCOUNT_URL}/change-password`;
 export const API_REFRESH_TOKEN_URL = `${SERVER_API_URL + API_AUTHENTICATE_URL}/refresh`;
 export const DISABLE_GENERIC_ROUTE = '/logic';
+export const API_SERVICES_URL = `${SERVER_API_URL}${API_URL}services`;
+export const API_AREAS_URL = `${SERVER_API_URL}${API_URL}areas`;
 
 /**
  * Navigation URLs Constants
@@ -87,6 +89,16 @@ export const CHUNK_LOAD_ERROR = 'ChunkLoadError';
 export const PROFILE_MIN_SIZE_NAME = 2;
 export const PROFILE_MAX_SIZE_NAME = 100;
 export const PROFILE_MAX_SIZE_DESCRIPTION = 256;
+
+/**
+ * Service Constants
+ */
+export const SERVICE_LIST_ROUTER = '/services';
+export const SERVICE_CREATE_ROUTER = '/services/new';
+export const SERVICE_MIN_SIZE_NAME = 2;
+export const SERVICE_MAX_SIZE_NAME = 100;
+export const SERVICE_MIN_SIZE_PATH = 2;
+export const SERVICE_MAX_SIZE_PATH = 256;
 
 /**
  * Pagination Constants

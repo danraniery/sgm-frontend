@@ -2,7 +2,7 @@ import {AbstractControl, ValidationErrors, ValidatorFn} from '@angular/forms';
 
 export const ValidPasswordValidator: ValidatorFn = (form: AbstractControl): ValidationErrors | null => {
 
-    const isValidPassword = (password: string, firstName: string, lastName: string, username: string) => {
+    const isValidPassword = (password: string) => {
         const containsListResult = [
             containsNumber(password),
             containsUppercaseLetter(password),
@@ -14,43 +14,7 @@ export const ValidPasswordValidator: ValidatorFn = (form: AbstractControl): Vali
             return {invalidPassword: 'message.invalidPassword'};
         }
 
-        if (containsUserInfo(firstName, lastName, password, username)) {
-            return {invalidPassword: 'message.invalidPasswordWithUserInfo'};
-        }
-
         return {};
-    };
-
-    const containsUserInfo = (firstName: string, lastName: string, password: string, username: string) => {
-        let result = false;
-        let names: any[] = !!username ? [username] : [];
-
-        if (firstName) {
-            names = names.concat(firstName.split(' '));
-        }
-
-        if (lastName) {
-            names = names.concat(lastName.split(' '));
-        }
-
-        if (names) {
-            names.forEach((name: any) => {
-                if (passwordContainsName(name, password)) {
-                    result = true;
-                }
-            });
-        }
-        return result;
-    };
-
-    const passwordContainsName = (name: string, password: string) => {
-        if (isEmpty(name)) {
-            return false;
-        }
-        if (!!password) {
-            return password.toLowerCase().includes(name.toLowerCase());
-        }
-        return !!password;
     };
 
     const containsNumber = (value: string) => {
@@ -80,11 +44,7 @@ export const ValidPasswordValidator: ValidatorFn = (form: AbstractControl): Vali
         return (str.length === 0 || !str.trim());
     };
 
-    const formGroup = form?.parent;
-    const firstName = formGroup?.get('firstName')?.value;
-    const lastName = formGroup?.get('lastName')?.value;
-    const username = formGroup?.get('username')?.value;
     const password = form?.value;
 
-    return isValidPassword(password, firstName, lastName, username);
+    return isValidPassword(password);
 };

@@ -1,0 +1,7 @@
+@import 'src/assets/theme/media-breakpoint-import-utils';
+
+@include media-breakpoint-down(md) {
+    .add-button {
+        margin-top: -50px;
+    }
+}

@@ -140,10 +140,58 @@
             }
         }
     },
+    "service": {
+        "button": "Serviço",
+        "title": "Serviços",
+        "sub-title": {
+            "new": "Adicionar Serviço",
+            "edit": "Editar Serviço",
+            "view": "Detalhes do Serviço"
+        },
+        "list": {
+            "name": "Serviço",
+            "path": "Caminho",
+            "localPath": "Caminho Local"
+        },
+        "form": {
+            "label": {
+                "new":  "Aqui você pode adicionar um novo serviço",
+                "edit": "Aqui você pode atualizar as informações do serviço",
+                "view": "Aqui você pode visualizar as informações do serviço"
+            },
+            "info": {
+                "title": "Dados do serviço",
+                "name": "Nome",
+                "namePlaceholder": "Nome",
+                "areas": "Áreas",
+                "areasPlaceholder": "Áreas",
+                "path": "Caminho",
+                "pathPlaceholder": "Caminho",
+                "localPath": "Caminho Local"
+            }
+        },
+        "onSave": "Serviço adicionado.",
+        "onUpdate": "Serviço atualizado.",
+        "modal": {
+            "deactivate": {
+                "title": "Desativar Serviço",
+                "body": "Você confirma a desativação do Serviço?",
+                "message": "Serviço desativado."
+            },
+            "activate": {
+                "title": "Ativar Serviço",
+                "body": "Você confirma a ativação do Serviço?",
+                "message": "Serviço ativado."
+            }
+        }
+    },
     "sidenav": {
         "home": "Início",
         "users": "Usuários",
         "settings": "Configurações",
+        "services": "Serviços",
+        "citizen": "Cidadão",
+        "health": "Saúde",
         "editProfile": "Editar conta",
         "editPassword": "Alterar Senha",
         "logout": "Sair"

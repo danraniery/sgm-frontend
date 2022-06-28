@@ -110,7 +110,7 @@ export class ProfileComponent extends BaseListComponent<IProfile> {
 
     loadProgressPageInfiniteScroll(): void {
         this.page = this.page + 1;
-        this.loadAll();
+        this.loadAllWithInfinit();
     }
 
 }

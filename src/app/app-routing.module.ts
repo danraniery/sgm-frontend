@@ -15,6 +15,11 @@ const routes: Routes = [
         canActivate: [AuthGuard]
     },
     {
+        path: 'services',
+        loadChildren: () => import('./modules/sgm-service/sgm-service.module').then((mod) => mod.SgmServiceModule),
+        canActivate: [AuthGuard]
+    },
+    {
         path: 'settings',
         loadChildren: () => import('./modules/settings/settings.module').then((mod) => mod.SettingsModule),
         canActivate: [AuthGuard]

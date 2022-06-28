@@ -1,11 +1,11 @@
 <section id="user-list-container">
-    <h1 class="title mb-2" transloco="user.title">Users</h1>
+    <h1 class="title mb-2" transloco="service.title">Services</h1>
     <div class="row justify-content-end">
-        <div class="col-auto add-button" *sgmHasAnyAuthority="['ROLE_USER_MANAGEMENT']">
+        <div class="col-auto add-button" *sgmHasAnyAuthority="['ROLE_SERVICE_MANAGEMENT']">
             <button type="button" class="btn btn-primary btn-register d-flex align-items-center mt-3 mb-3"
-                    data-testid="create-button" (click)="goToNewUserScreen()">
+                    data-testid="create-button" (click)="goToNewServiceScreen()">
                 <span class="material-icons-outlined">add</span>
-                <span class="web-content" transloco="user.button">User</span>
+                <span class="web-content" transloco="service.button">Service</span>
             </button>
         </div>
     </div>
@@ -14,18 +14,13 @@
         <tr>
             <th scope="col" data-testid="sort-btn-user" (click)="sort('name')"
                 [ngClass]="{'hover' : orderBy === 'name'}">
-                <span transloco="user.list.user">User</span>
+                <span transloco="service.list.name">Name</span>
                 <span class="material-icons-outlined sort-icon">{{getSortIcon('name')}}</span>
             </th>
-            <th scope="col" data-testid="sort-btn-type" (click)="sort('type')"
+            <th scope="col" data-testid="sort-btn-type" (click)="sort('path')"
                 [ngClass]="{'hover' : orderBy === 'type'}">
-                <span transloco="user.list.type">Type</span>
-                <span class="material-icons-outlined sort-icon">{{getSortIcon('type')}}</span>
-            </th>
-            <th scope="col" data-testid="sort-btn-rural" (click)="sort('ruralProducer')"
-                [ngClass]="{'hover' : orderBy === 'ruralProducer'}">
-                <span transloco="user.list.ruralProducer">Rural Producer</span>
-                <span class="material-icons-outlined sort-icon">{{getSortIcon('ruralProducer')}}</span>
+                <span transloco="service.list.path">Path</span>
+                <span class="material-icons-outlined sort-icon">{{getSortIcon('path')}}</span>
             </th>
             <th scope="col" data-testid="sort-btn-status" (click)="sort('activated')"
                 [ngClass]="{'hover' : orderBy === 'activated'}">
@@ -48,30 +43,28 @@
         </tr>
         </tbody>
         <tbody *ngIf="!isLoading">
-        <tr *ngFor="let user of items; let index = index" [attr.data-testid]="'row-' + index">
-            <td (click)="redirectByUrl(buildEditOrViewRoute(user.id))"
+        <tr *ngFor="let service of items; let index = index" [attr.data-testid]="'row-' + index">
+            <td (click)="redirectByUrl(buildEditOrViewRoute(service.id))"
                 class="text-truncate cursor-pointer"
-                title="{{user.name}}">{{ user.name }}</td>
-            <td class="text-truncate">{{ (user.type === 'legal_entity' ? 'user.list.legalEntity' : 'user.list.naturalPerson') | transloco }}</td>
-            <td class="text-truncate">{{ (user.ruralProducer ? 'user.list.yes' : 'user.list.no') | transloco }}</td>
+                title="{{service.name}}">{{ service.name }}</td>
+            <td class="text-truncate">{{ service.path }}</td>
             <td>
                 <sgm-toggle-status id="toggle-status-+{{index}}"
                                    [inputToggleId]='index'
-                                   [activated]="user.activated"
-                                   [blocked]="user.blocked"
-                                   (toggleAction)="changeStatus(user)"
-                                   [permissions]="['ROLE_USER_MANAGEMENT']"
+                                   [activated]="service.activated"
+                                   (toggleAction)="changeStatus(service)"
+                                   [permissions]="['ROLE_SERVICE_MANAGEMENT']"
                                    data-testid="status-toggle-button">
                 </sgm-toggle-status>
             </td>
             <td class="d-flex align-items-center">
-                <div class="action-icons-container" *sgmHasAnyAuthority="['ROLE_AUDITOR', 'ROLE_USER_MANAGEMENT']">
-                    <button class="btn btn-icon" data-testid="view-button" (click)="gotToViewScreen(user.id)">
+                <div class="action-icons-container" *sgmHasAnyAuthority="['ROLE_AUDITOR', 'ROLE_SERVICE_MANAGEMENT']">
+                    <button class="btn btn-icon" data-testid="view-button" (click)="gotToViewScreen(service.id)">
                         <span class="material-icons-outlined action-icons">visibility</span>
                     </button>
                 </div>
-                <div class="action-icons-container" *sgmHasAnyAuthority="['ROLE_USER_MANAGEMENT']">
-                    <button class="btn btn-icon" (click)="gotToEditScreen(user.id)" data-testid="edit-button">
+                <div class="action-icons-container" *sgmHasAnyAuthority="['ROLE_SERVICE_MANAGEMENT']">
+                    <button class="btn btn-icon" (click)="gotToEditScreen(service.id)" data-testid="edit-button">
                         <span class="material-icons-outlined action-icons" data-testid="edit-button">edit</span>
                     </button>
                 </div>
@@ -89,31 +82,28 @@
          [infiniteScrollThrottle]="50"
          (scrolled)="loadProgressPageInfiniteScroll()">
 
-        <table *ngFor="let user of items; let index = index" [attr.data-testid]="'row-' + index"
+        <table *ngFor="let service of items; let index = index" [attr.data-testid]="'row-' + index"
                class="mt-3 table table-striped">
             <thead class="mobile">
             <tr>
-                <th scope="col" class="cursor-pointer" (click)="redirectByUrl(buildEditOrViewRoute(user.id))"
-                    colspan="2">{{user.name}}</th>
+                <th scope="col" class="cursor-pointer" (click)="redirectByUrl(buildEditOrViewRoute(service.id))"
+                    colspan="2">{{service.name}}</th>
             </tr>
             </thead>
+            <tbody *ngIf="isLoading">
             <tbody>
             <tr>
-                <td class="text-truncate" transloco="user.list.type">Type</td>
-                <td class="text-truncate">{{ (user.type === 'legal_entity' ? 'user.list.legalEntity' : 'user.list.naturalPerson') | transloco }}</td>
-            </tr>
-            <tr>
-                <td class="text-truncate" transloco="user.list.ruralProducer">Rural Producer</td>
-                <td class="text-truncate">{{ (user.ruralProducer ? 'user.list.yes' : 'user.list.no') | transloco }}</td>
+                <td class="text-truncate" transloco="service.list.path">Path</td>
+                <td class="text-truncate">{{service.path }}</td>
             </tr>
             <tr>
                 <td class="text-truncate" transloco="generalFields.status">Status</td>
                 <td>
                     <sgm-toggle-status id="toggle-status-+{{index}}"
                                        [inputToggleId]='index'
-                                       [activated]="user.activated"
-                                       (toggleAction)="changeStatus(user)"
-                                       [permissions]="['ROLE_USER_MANAGEMENT']"
+                                       [activated]="service.activated"
+                                       (toggleAction)="changeStatus(service)"
+                                       [permissions]="['ROLE_SERVICE_MANAGEMENT']"
                                        data-testid="status-toggle-button">
                     </sgm-toggle-status>
                 </td>

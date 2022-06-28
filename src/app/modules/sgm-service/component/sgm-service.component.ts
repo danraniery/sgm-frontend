@@ -1,22 +1,30 @@
 import {Component, OnDestroy} from '@angular/core';
-import {IUser, UserList} from '../../../shared/models/user.model';
-import {ACTIVE_LABEL, CREATE_USER_ROUTER, EDIT, INACTIVE_LABEL, USER_LIST_ROUTER, VIEW} from '../../../app.constants';
+import {UserList} from '../../../shared/models/user.model';
+import {
+    ACTIVE_LABEL,
+    EDIT,
+    INACTIVE_LABEL,
+    SERVICE_CREATE_ROUTER,
+    SERVICE_LIST_ROUTER,
+    VIEW
+} from '../../../app.constants';
 import {ModalService} from '../../../core/services/modal.service';
 import {FeedbackService} from '../../../core/services/feedback.service';
-import {UserService} from '../user.service';
+import {SgmServiceService} from '../sgm-service.service';
 import {AccountService} from '../../../core/services/account.service';
 import {SortService} from '../../../core/services/sort.service';
 import {BaseListComponent} from '../../../shared/components/base-list/base-list.component';
 import {Subscription} from 'rxjs';
 import {LoadingService} from '../../../shared/components/loading/loading.service';
 import {Router} from '@angular/router';
+import {ISGMService, SGMServiceList} from '../../../shared/models/sgm-service.model';
 
 @Component({
-    selector: 'sgm-user',
-    templateUrl: './user.component.html',
-    styleUrls: ['./user.component.scss']
+    selector: 'sgm-service',
+    templateUrl: './sgm-service.component.html',
+    styleUrls: ['./sgm-service.component.scss']
 })
-export class UserComponent extends BaseListComponent<UserList> implements OnDestroy {
+export class SgmServiceComponent extends BaseListComponent<SGMServiceList> implements OnDestroy {
 
     languageSubscriber: Subscription | undefined;
     users: UserList[] = [];
@@ -28,11 +36,11 @@ export class UserComponent extends BaseListComponent<UserList> implements OnDest
         modalService: ModalService,
         accountService: AccountService,
         feedbackService: FeedbackService,
-        private readonly userService: UserService,
+        private readonly sgmServiceService: SgmServiceService,
         private readonly loadingService: LoadingService
     ) {
-        super(router, userService, sortService, modalService, accountService, feedbackService);
-        this.ROLE_WHICH_CAN_EDIT = 'ROLE_USER_MANAGEMENT';
+        super(router, sgmServiceService, sortService, modalService, accountService, feedbackService);
+        this.ROLE_WHICH_CAN_EDIT = 'ROLE_SERVICE_MANAGEMENT';
     }
 
     listOnInit(): void {
@@ -48,37 +56,31 @@ export class UserComponent extends BaseListComponent<UserList> implements OnDest
         }
     }
 
-    goToNewUserScreen(): void {
+    goToNewServiceScreen(): void {
         this.loadingService.start();
-        this.router.navigate([CREATE_USER_ROUTER]).then();
+        this.router.navigate([SERVICE_CREATE_ROUTER]).then();
     }
 
     gotToViewScreen(id: any): void {
         this.loadingService.start();
-        this.router.navigate([`${USER_LIST_ROUTER}/${id}${VIEW}`]).then();
+        this.router.navigate([`${SERVICE_LIST_ROUTER}/${id}${VIEW}`]).then();
     }
 
     gotToEditScreen(id: any): void {
         this.loadingService.start();
-        this.router.navigate([`${USER_LIST_ROUTER}/${id}${EDIT}`]).then();
+        this.router.navigate([`${SERVICE_LIST_ROUTER}/${id}${EDIT}`]).then();
     }
 
-    changeStatus(user: IUser) {
+    changeStatus(service: ISGMService) {
         let modalTitle;
         let modalBody;
         let toastMessage;
 
-        if (user.blocked) {
-            modalTitle = 'user.modal.unblock.title';
-            modalBody = 'user.modal.unblock.body';
-            toastMessage = 'user.modal.unblock.message';
-        } else {
-            modalTitle = user.activated ? 'user.modal.deactivate.title' : 'user.modal.activate.title';
-            modalBody = user.activated ? 'user.modal.deactivate.body' : 'user.modal.activate.body';
-            toastMessage = user.activated ? 'user.modal.deactivate.message' : 'user.modal.activate.message';
-        }
+        modalTitle = service.activated ? 'service.modal.deactivate.title' : 'service.modal.activate.title';
+        modalBody = service.activated ? 'service.modal.deactivate.body' : 'service.modal.activate.body';
+        toastMessage = service.activated ? 'service.modal.deactivate.message' : 'service.modal.activate.message';
 
-        this.showModalStatusConfirmation(user, modalTitle, modalBody, toastMessage);
+        this.showModalStatusConfirmation(service, modalTitle, modalBody, toastMessage);
 
     }
 
@@ -101,7 +103,7 @@ export class UserComponent extends BaseListComponent<UserList> implements OnDest
 
     buildEditOrViewRoute(id: number): string {
         const action = this.canEdit ? EDIT : VIEW;
-        return `${USER_LIST_ROUTER}/${id}${action}`;
+        return `${SERVICE_LIST_ROUTER}/${id}${action}`;
     }
 
     handleEmptyList(): void {

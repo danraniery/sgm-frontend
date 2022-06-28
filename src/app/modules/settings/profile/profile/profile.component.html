@@ -97,17 +97,6 @@
                     colspan="2">{{profile.name}}</th>
             </tr>
             </thead>
-            <tbody *ngIf="isLoading">
-            <tr>
-                <td colspan="4">
-                    <div class="d-flex justify-content-center align-items-center">
-                        <div class="back-loader-table">
-                            <div class="spinner-table">
-                            </div>
-                        </div>
-                    </div>
-                </td>
-            </tr>
             <tbody>
             <tr>
                 <td class="text-truncate" transloco="profile.form.description">Description</td>
@@ -128,6 +117,13 @@
             </tr>
             </tbody>
         </table>
+
+        <div *ngIf="isLoading" class="d-flex justify-content-center align-items-center">
+            <div class="back-loader-table">
+                <div class="spinner-table">
+                </div>
+            </div>
+        </div>
 
     </div>
 

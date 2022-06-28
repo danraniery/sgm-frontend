@@ -1,0 +1,148 @@
+<section id="service-form">
+    <form (ngSubmit)="save()" *ngIf="formGroup" [formGroup]="formGroup" class="form-container">
+        <label class="mb-4">{{ label | transloco }}</label>
+        <div class="row mb-3 mt-3">
+            <div class="col-sm-6 col-12">
+                <div class="row">
+                    <div class="col mb-3">
+                        <label class="d-block required-field">{{ 'service.form.info.name' | transloco }}</label>
+                        <div class="input-group w-100">
+                            <input (blur)="removeEmptySpaces('name')"
+                                   (keydown)="checkEmptySpaces($event, 'name')"
+                                   (keyup)="checkEmptySpaces($event, 'name')"
+                                   class="form-control"
+                                   data-testid="name-input"
+                                   formControlName="name"
+                                   maxlength="{{constants.NAME_LENGTH_MAX + 1}}"
+                                   minlength="{{constants.NAME_LENGTH_MIN}}"
+                                   name="name"
+                                   placeholder="{{ 'service.form.info.namePlaceholder' | transloco }}"
+                                   required
+                                   type="text">
+                        </div>
+                        <div *ngIf="formGroup.get('name')?.invalid && formGroup.get('name')?.dirty ||
+                            formGroup.get('name')?.touched" id="name">
+                            <small *ngIf="formGroup.get('name')?.errors?.required"
+                                   class="form-text validation-message"
+                                   transloco="message.required">
+                                Required field.
+                            </small>
+                            <small *ngIf="formGroup.get('name')?.errors?.minlength"
+                                   [translocoParams]="{min : constants.NAME_LENGTH_MIN}"
+                                   class="form-text validation-message"
+                                   transloco="message.minLength">
+                                This field must be at least 2 characters.
+                            </small>
+                            <small *ngIf="formGroup.get('name')?.hasError('maxlength')"
+                                   [translocoParams]="{max : constants.NAME_LENGTH_MAX}"
+                                   class="form-text validation-message"
+                                   transloco="message.maxLength">
+                                This field cannot be longer than 100 characters.
+                            </small>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label class="d-block required-field">{{ 'service.form.info.areas' | transloco }}</label>
+                        <div class="input-group w-100">
+                            <ng-select class='form-control theme-custom-select'
+                                       [items]="areas"
+                                       [multiple]="true"
+                                       [closeOnSelect]="false"
+                                       [searchable]="false"
+                                       bindLabel="name"
+                                       formControlName="areas"
+                                       placeholder="{{ 'service.form.info.areasPlaceholder' | transloco }}"
+                                       data-testid="areas-select"
+                                       [clearAllText]="'ngSelect.clearAllText' | transloco">
+                            </ng-select>
+                        </div>
+                        <div *ngIf="formGroup.get('roles')?.invalid && formGroup.get('roles')?.dirty
+                                || formGroup.get('roles')?.touched">
+                            <small class="form-text validation-message" *ngIf="formGroup.get('roles')?.errors?.['required']"
+                                   transloco="message.required">
+                                Required field.
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-12">
+                <div class="row">
+                    <div class="col mb-3">
+                        <label class="d-block required-field">{{ 'service.form.info.path' | transloco }}</label>
+                        <div class="input-group w-100">
+                            <input (keydown.space)="$event.preventDefault()" class="form-control"
+                                   data-testid="path-input" formControlName="path"
+                                   maxlength="{{constants.PATH_LENGTH_MAX + 1}}"
+                                   minlength="{{constants.PATH_LENGTH_MIN}}"
+                                   name="path"
+                                   placeholder="{{ 'service.form.info.pathPlaceholder' | transloco }}"
+                                   required
+                                   type="text">
+                        </div>
+                        <div *ngIf="formGroup.get('path')?.invalid && formGroup.get('path')?.dirty ||
+                        formGroup.get('path')?.touched" id="path">
+                            <small *ngIf="formGroup.get('path')?.errors?.required"
+                                   class="form-text validation-message"
+                                   transloco="message.required">
+                                Required field.
+                            </small>
+                            <small *ngIf="formGroup.get('path')?.errors?.minlength"
+                                   [translocoParams]="{min : constants.PATH_LENGTH_MIN}"
+                                   class="form-text validation-message"
+                                   transloco="message.minLength">
+                                This field must be at least 2 characters.
+                            </small>
+                            <small *ngIf="formGroup.get('path')?.hasError('maxlength')"
+                                   [translocoParams]="{max : constants.PATH_LENGTH_MAX}"
+                                   class="form-text validation-message"
+                                   transloco="message.maxLength">
+                                This field cannot be longer than 256 characters.
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3 mb-3 d-flex">
+                    <div class="col-auto mb-3 m-auto">
+                        <div class="row p-0">
+                            <div class="col-auto p-0">
+                                <input class="check" data-testid="status-checkbox" formControlName="activated"
+                                       id="activated" name="activated" type="checkbox">
+                            </div>
+                            <div class="col-auto checkbox-label-container">
+                                <label class="checkbox-label" for="activated">{{ 'status.active' | transloco }}</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-auto mb-3 m-auto">
+                        <div class="row p-0">
+                            <div class="col-auto p-0">
+                                <input class="check" data-testid="type-checkbox" formControlName="localPath"
+                                       id="localPath" name="localPath" type="checkbox">
+                            </div>
+                            <div class="col-auto checkbox-label-container">
+                                <label class="checkbox-label" for="localPath">{{ 'service.form.info.localPath' | transloco }}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-around justify-content-sm-start">
+            <button class="btn btn-secondary mr-2 me-3" type="button" data-testid="back-button"
+                    (click)="goToServiceListScreen()">
+                <span transloco="{{ isEditMode ? 'button.cancel' : 'button.back'}}">Cancel/Back</span>
+            </button>
+
+            <button *ngIf="!isViewMode" class="btn btn-primary mr-2" type="submit"
+                    [disabled]="formGroup.invalid || isLoading" data-testid="submit-button">
+                <span transloco="{{ !isEditMode ? 'button.save' : 'button.update'}}">Save/Update</span>
+            </button>
+        </div>
+    </form>
+</section>

@@ -201,7 +201,8 @@
                                        id="userType" name="userType" type="checkbox">
                             </div>
                             <div class="col-auto checkbox-label-container">
-                                <label class="checkbox-label" for="userType">{{ 'user.form.info.type' | transloco }}</label>
+                                <label class="checkbox-label"
+                                       for="userType">{{ 'user.form.info.type' | transloco }}</label>
                             </div>
                         </div>
                     </div>
@@ -212,7 +213,8 @@
                                        id="ruralProducer" name="ruralProducer" type="checkbox">
                             </div>
                             <div class="col-auto checkbox-label-container">
-                                <label class="checkbox-label" for="ruralProducer">{{ 'user.form.info.ruralProducer' | transloco }}</label>
+                                <label class="checkbox-label"
+                                       for="ruralProducer">{{ 'user.form.info.ruralProducer' | transloco }}</label>
                             </div>
                         </div>
                     </div>
@@ -226,8 +228,8 @@
                 <span transloco="{{ isEditMode ? 'button.cancel' : 'button.back'}}">Cancel/Back</span>
             </button>
 
-            <button *ngIf="!isViewMode" class="btn btn-primary mr-2" type="submit"
-                    [disabled]="formGroup.invalid || isLoading" data-testid="submit-button">
+            <button *ngIf="!isViewMode" class="btn btn-primary mr-2" type="submit" data-testid="submit-button"
+                    [disabled]="formGroup.invalid || isUploadingImage || !isPasswordEquals() || isLoading">
                 <span transloco="{{ !isEditMode ? 'button.save' : 'button.update'}}">Save/Update</span>
             </button>
         </div>
