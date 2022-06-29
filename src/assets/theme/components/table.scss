@@ -133,6 +133,31 @@ table {
     }
 }
 
+.service-card {
+    background: var(--bs-dark-blue);
+    height: 200px;
+    width: 200px;
+    margin: 15px;
+    cursor: pointer;
+    border: 1px solid var(--bs-ship-cove);
+    border-radius: 24px;
+
+    label {
+        font-size: 18px;
+        word-break: break-all;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin: auto;
+        height: auto;
+        max-height: 200px;
+        cursor: pointer;
+    }
+}
+
+.service-card:hover {
+    background: var(--bs-dark-magenta);
+}
+
 @include media-breakpoint-down(md) {
     .web-content {
         display: none;

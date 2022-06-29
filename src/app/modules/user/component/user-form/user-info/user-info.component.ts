@@ -105,8 +105,8 @@ export class UserInfoComponent implements OnInit {
             if (!isViewMode) {
                 this.loadProfiles();
             }
-            this.formGroup.get('userType')?.setValue(this.user.type === 'legal_entity')
-            this.formGroup.get('ruralProducer')?.setValue(this.user.ruralProducer)
+            this.formGroup.get('userType')?.setValue(this.user.type === 'legal_entity');
+            this.formGroup.get('ruralProducer')?.setValue(this.user.ruralProducer);
             if (this.isEditMode) {
                 this.formGroup.get('password').clearValidators();
                 this.formGroup.get('password').updateValueAndValidity();
